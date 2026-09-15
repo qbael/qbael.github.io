@@ -924,62 +924,6 @@ export default function Home() {
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
-      <header className="topbar">
-        <Drawer
-          open={drawerOpen}
-          onOpenChange={(open) => {
-            if (open) pendingDrawerHeading.current = null;
-            setDrawerOpen(open);
-          }}
-          swipeDirection="left"
-        >
-          <DrawerTrigger ref={drawerTriggerRef} className="mobile-menu">
-            <Menu aria-hidden="true" size={17} /> Files
-          </DrawerTrigger>
-          <DrawerContent
-            className="drawer-panel"
-            initialFocus={drawerCloseRef}
-            finalFocus={() =>
-              resolveDrawerFocus(
-                pendingDrawerHeading.current,
-                (id) => document.getElementById(`heading-${id}`),
-                drawerTriggerRef.current ?? true,
-              )
-            }
-          >
-            <div className="drawer-top">
-              <div>
-                <DrawerTitle>Portfolio files</DrawerTitle>
-                <DrawerDescription>Choose a section to open.</DrawerDescription>
-              </div>
-              <DrawerClose
-                ref={drawerCloseRef}
-                className="drawer-close"
-                aria-label="Close files"
-              >
-                <X aria-hidden="true" size={18} />
-              </DrawerClose>
-            </div>
-            <div className="drawer-nav">
-              <Explorer
-                active={active}
-                projectsExpanded={projectsExpanded}
-                setProjectsExpanded={setProjectsExpanded}
-                origin="drawer"
-                openFile={openFile}
-              />
-            </div>
-          </DrawerContent>
-        </Drawer>
-        <div className="brand" aria-label="Portfolio workspace">
-          <span className="brand-mark">QB</span>
-          <span>
-            <strong>Ho Quoc Bao</strong> / portfolio
-          </span>
-        </div>
-        <span className="branch-label">main · ready</span>
-      </header>
-
       <div className="workspace">
         <aside className="explorer">
           <Explorer
@@ -997,46 +941,96 @@ export default function Home() {
             value={active}
             onValueChange={(value) => openFile(value as FileId, 'tab')}
           >
-            <TabsList className="tab-strip" aria-label="Open files">
-              {openTabs.map((id) => {
-                const meta = fileMeta(id);
-                return (
-                  <div className="tab-item" key={id}>
-                    <TabsTrigger
-                      className="tab-button"
-                      value={id}
-                      id={`tab-${id}`}
-                      aria-controls={`panel-${id}`}
-                      onFocus={(event) =>
-                        event.currentTarget.scrollIntoView({
-                          block: 'nearest',
-                          inline: 'nearest',
-                          behavior: window.matchMedia(
-                            '(prefers-reduced-motion: reduce)',
-                          ).matches
-                            ? 'auto'
-                            : 'smooth',
-                        })
-                      }
+            <div className="workspace-toolbar">
+              <Drawer
+                open={drawerOpen}
+                onOpenChange={(open) => {
+                  if (open) pendingDrawerHeading.current = null;
+                  setDrawerOpen(open);
+                }}
+                swipeDirection="left"
+              >
+                <DrawerTrigger ref={drawerTriggerRef} className="mobile-menu">
+                  <Menu aria-hidden="true" size={17} /> Files
+                </DrawerTrigger>
+                <DrawerContent
+                  className="drawer-panel"
+                  initialFocus={drawerCloseRef}
+                  finalFocus={() =>
+                    resolveDrawerFocus(
+                      pendingDrawerHeading.current,
+                      (id) => document.getElementById(`heading-${id}`),
+                      drawerTriggerRef.current ?? true,
+                    )
+                  }
+                >
+                  <div className="drawer-top">
+                    <div>
+                      <DrawerTitle>Portfolio files</DrawerTitle>
+                      <DrawerDescription>
+                        Choose a section to open.
+                      </DrawerDescription>
+                    </div>
+                    <DrawerClose
+                      ref={drawerCloseRef}
+                      className="drawer-close"
+                      aria-label="Close files"
                     >
-                      {isProject(id) ? (
-                        <Code2 aria-hidden="true" size={14} />
-                      ) : (
-                        <FileText aria-hidden="true" size={14} />
-                      )}
-                      {meta.filename}
-                    </TabsTrigger>
-                    <button
-                      className="tab-close"
-                      aria-label={`Close ${meta.label}`}
-                      onClick={() => closeFile(id)}
-                    >
-                      <X aria-hidden="true" size={14} />
-                    </button>
+                      <X aria-hidden="true" size={18} />
+                    </DrawerClose>
                   </div>
-                );
-              })}
-            </TabsList>
+                  <div className="drawer-nav">
+                    <Explorer
+                      active={active}
+                      projectsExpanded={projectsExpanded}
+                      setProjectsExpanded={setProjectsExpanded}
+                      origin="drawer"
+                      openFile={openFile}
+                    />
+                  </div>
+                </DrawerContent>
+              </Drawer>
+              <TabsList className="tab-strip" aria-label="Open files">
+                {openTabs.map((id) => {
+                  const meta = fileMeta(id);
+                  return (
+                    <div className="tab-item" key={id}>
+                      <TabsTrigger
+                        className="tab-button"
+                        value={id}
+                        id={`tab-${id}`}
+                        aria-controls={`panel-${id}`}
+                        onFocus={(event) =>
+                          event.currentTarget.scrollIntoView({
+                            block: 'nearest',
+                            inline: 'nearest',
+                            behavior: window.matchMedia(
+                              '(prefers-reduced-motion: reduce)',
+                            ).matches
+                              ? 'auto'
+                              : 'smooth',
+                          })
+                        }
+                      >
+                        {isProject(id) ? (
+                          <Code2 aria-hidden="true" size={14} />
+                        ) : (
+                          <FileText aria-hidden="true" size={14} />
+                        )}
+                        {meta.filename}
+                      </TabsTrigger>
+                      <button
+                        className="tab-close"
+                        aria-label={`Close ${meta.label}`}
+                        onClick={() => closeFile(id)}
+                      >
+                        <X aria-hidden="true" size={14} />
+                      </button>
+                    </div>
+                  );
+                })}
+              </TabsList>
+            </div>
 
             {openTabs.map((id) => (
               <TabsContent
