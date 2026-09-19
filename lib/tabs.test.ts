@@ -1,8 +1,7 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
-import { DatabaseSync } from 'node:sqlite';
 import test from 'node:test';
 
+import { fileExtension, fileKind } from './files.ts';
 import {
   closeTab,
   openTab,
@@ -12,13 +11,23 @@ import {
   shouldFocusHeading,
   tryNavigation,
 } from './tabs.ts';
-import {
-  handleVisitRequest,
-  hasCountedView,
-  INCREMENT_VIEW_COUNT_SQL,
-  READ_VIEW_COUNT_SQL,
-  VIEW_COOKIE,
-} from './visits.ts';
+import { fetchVisitCount, parseVisitCount } from './visits.ts';
+
+void test('file kinds follow the last extension, including nested paths', () => {
+  assert.equal(fileExtension('projects / Medify.java'), 'java');
+  assert.equal(fileKind('about.tsx'), 'tsx');
+  assert.equal(fileKind('education.json'), 'json');
+  assert.equal(fileKind('achievements.yaml'), 'yaml');
+  assert.equal(fileKind('experience.ts'), 'ts');
+  assert.equal(fileKind('skills.toml'), 'toml');
+  assert.equal(fileKind('visitors.log'), 'log');
+  assert.equal(fileKind('Instory.cs'), 'csharp');
+  assert.equal(fileKind('smartdoc.py'), 'python');
+  assert.equal(fileKind('phone-store.php'), 'php');
+  assert.equal(fileKind('school-bus.ts'), 'ts');
+  assert.equal(fileKind('sport-store.sql'), 'sql');
+  assert.equal(fileKind('notes'), 'unknown');
+});
 
 void test('opens once, activates existing tabs, and keeps their order', () => {
   assert.deepEqual(openTab({ tabs: ['about'], active: 'about' }, 'projects'), {
@@ -101,85 +110,45 @@ void test('failed history updates leave navigation available to abort', () => {
   );
 });
 
-void test('the production visit handler counts once and rejects cross-origin requests', async () => {
-  const database = new DatabaseSync(':memory:');
-  database.exec(
-    readFileSync(
-      new URL('../drizzle/0000_open_zarek.sql', import.meta.url),
-      'utf8',
-    ),
-  );
-  const store = () => ({
-    read: async () => database.prepare(READ_VIEW_COUNT_SQL).get(1),
-    increment: async () => database.prepare(INCREMENT_VIEW_COUNT_SQL).get(),
-  });
-  const url = 'https://portfolio.test/api/visits';
-  const first = await handleVisitRequest(
-    new Request(url, {
-      method: 'POST',
-      headers: { origin: 'https://portfolio.test' },
-    }),
-    store,
-  );
-  const repeat = await handleVisitRequest(
-    new Request(url, {
-      method: 'POST',
-      headers: {
-        cookie: `${VIEW_COOKIE}=1`,
-        origin: 'https://portfolio.test',
-      },
-    }),
-    store,
-  );
-  const crossOrigin = await handleVisitRequest(
-    new Request(url, {
-      method: 'POST',
-      headers: { origin: 'https://example.com' },
-    }),
-    store,
-  );
+void test('public visit counts accept zero and grouped totals only', () => {
+  assert.equal(parseVisitCount({ count: '0' }), 0);
+  assert.equal(parseVisitCount({ count: '1,234' }), 1234);
+  assert.equal(parseVisitCount({ count: '1234' }), 1234);
+  for (const count of [
+    '-1',
+    '1.5',
+    '01',
+    '12,34',
+    '1,234,56',
+    '9,007,199,254,740,992',
+    'NaN',
+  ]) {
+    assert.throws(() => parseVisitCount({ count }));
+  }
+  for (const value of [null, {}, { count: 1 }, { count: '' }]) {
+    assert.throws(() => parseVisitCount(value));
+  }
+});
 
-  assert.deepEqual(await first.json(), { total: 1 });
-  assert.equal(first.status, 200);
-  assert.equal(first.headers.get('cache-control'), 'no-store');
-  assert.match(
-    first.headers.get('set-cookie') ?? '',
-    /^portfolio_view_counted=1; Path=\/; HttpOnly; SameSite=Lax; Secure$/,
-  );
-  assert.deepEqual(await repeat.json(), { total: 1 });
-  assert.equal(repeat.status, 200);
-  assert.equal(repeat.headers.get('set-cookie'), null);
-  assert.equal(crossOrigin.status, 403);
-  assert.equal(crossOrigin.headers.get('set-cookie'), null);
+void test('public visit fetch handles success and unavailable responses', async () => {
   assert.equal(
-    (database.prepare(READ_VIEW_COUNT_SQL).get(1) as { total: number }).total,
-    1,
+    await fetchVisitCount(
+      async () => new Response(JSON.stringify({ count: '1,234' })),
+    ),
+    1234,
   );
-
-  database.exec('DELETE FROM page_view_counter');
-  const missing = await handleVisitRequest(
-    new Request(url, {
-      method: 'POST',
-      headers: { cookie: `${VIEW_COOKIE}=1` },
+  await assert.rejects(
+    fetchVisitCount(async () => new Response(null, { status: 503 })),
+    /Counter unavailable/,
+  );
+  await assert.rejects(
+    fetchVisitCount(async () => {
+      throw new Error('Network unavailable');
     }),
-    store,
+    /Network unavailable/,
   );
-  assert.equal(missing.status, 503);
-
-  database.exec(
-    'INSERT INTO page_view_counter (id, total) VALUES (1, 9007199254740992)',
+  await assert.rejects(
+    fetchVisitCount(async () => new Response(JSON.stringify({ count: '-1' }))),
+    /Invalid visit count/,
   );
-  const unsafe = await handleVisitRequest(
-    new Request(url, {
-      method: 'POST',
-      headers: { cookie: `${VIEW_COOKIE}=1` },
-    }),
-    store,
-  );
-  assert.equal(unsafe.status, 503);
-
-  assert.equal(hasCountedView(null), false);
-  assert.equal(hasCountedView('theme=dark; portfolio_view_counted=1'), true);
-  assert.equal(hasCountedView('portfolio_view_counted=10'), false);
-  database.close();
 });

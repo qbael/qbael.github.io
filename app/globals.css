@@ -207,6 +207,85 @@ a {
   box-shadow: inset 2px 0 var(--primary);
 }
 
+.file-glyph {
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+  color: var(--file-glyph);
+  transition: color 150ms ease, transform 150ms ease;
+}
+
+.file-link:hover .file-glyph,
+.tab-button:hover .file-glyph {
+  transform: scale(1.08);
+}
+
+.file-glyph-tsx,
+.file-glyph-jsx {
+  --file-glyph: #61dafb;
+}
+
+.file-glyph-ts {
+  --file-glyph: #3178c6;
+}
+
+.file-glyph-js {
+  --file-glyph: #f7df1e;
+}
+
+.file-glyph-json {
+  --file-glyph: #f5d033;
+}
+
+.file-glyph-yaml {
+  --file-glyph: #e06c75;
+}
+
+.file-glyph-toml {
+  --file-glyph: #d19a66;
+}
+
+.file-glyph-log {
+  --file-glyph: #98c379;
+}
+
+.file-glyph-csharp {
+  --file-glyph: #a179dc;
+}
+
+.file-glyph-python {
+  --file-glyph: #3776ab;
+}
+
+.file-glyph-java {
+  --file-glyph: #e76f00;
+}
+
+.file-glyph-php {
+  --file-glyph: #777bb4;
+}
+
+.file-glyph-sql {
+  --file-glyph: #e38c00;
+}
+
+.file-glyph-markdown {
+  --file-glyph: #42a5f5;
+}
+
+.file-glyph-html {
+  --file-glyph: #e34f26;
+}
+
+.file-glyph-css {
+  --file-glyph: #1572b6;
+}
+
+.file-glyph-unknown {
+  --file-glyph: #abb2bf;
+}
+
+
 .main-column {
   display: flex;
   min-width: 0;
@@ -434,22 +513,31 @@ h1 {
   min-height: 2.75rem;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
   border: 1px solid var(--border);
-  border-radius: 0.375rem;
+  border-radius: 0.5rem;
   background: var(--surface-raised);
-  padding: 0.65rem 0.85rem;
+  padding: 0.65rem 0.95rem;
   color: var(--foreground);
   font-size: 0.8125rem;
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
-  transition: transform 120ms ease, border-color 120ms ease, background-color 120ms ease;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.action-icon {
+  flex-shrink: 0;
+  transition: transform 180ms ease, color 180ms ease;
 }
 
 .action:hover {
-  border-color: var(--primary);
-  background: var(--surface);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.action:hover .action-icon {
+  transform: scale(1.18);
 }
 
 .action-primary {
@@ -460,6 +548,64 @@ h1 {
 
 .action-primary:hover {
   background: #528bff;
+}
+
+/* Brand-specific styling and hover accents */
+.action-github:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: #24292e;
+  color: #ffffff;
+}
+
+.action-linkedin:hover {
+  border-color: #0a66c2;
+  background: rgba(10, 102, 194, 0.16);
+  color: #389ce8;
+  box-shadow: 0 4px 14px rgba(10, 102, 194, 0.25);
+}
+
+.action-linkedin:hover .action-icon {
+  color: #0a66c2;
+}
+
+.action-email:hover {
+  border-color: #ea4335;
+  background: rgba(234, 67, 53, 0.16);
+  color: #ff6b5e;
+  box-shadow: 0 4px 14px rgba(234, 67, 53, 0.25);
+}
+
+.action-email:hover .action-icon {
+  color: #ea4335;
+}
+
+.action-facebook:hover {
+  border-color: #1877f2;
+  background: rgba(24, 119, 242, 0.16);
+  color: #4c9aff;
+  box-shadow: 0 4px 14px rgba(24, 119, 242, 0.25);
+}
+
+.action-facebook:hover .action-icon {
+  color: #1877f2;
+}
+
+.action-cv {
+  border-color: var(--primary);
+  background: linear-gradient(135deg, var(--primary), #3b82f6);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.action-cv:hover {
+  border-color: #60a5fa;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+}
+
+.action-cv .action-icon {
+  color: #ffffff;
 }
 
 .shortcut-section {
@@ -481,46 +627,95 @@ h1 {
 .shortcut-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
 
 .shortcut {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   min-width: 0;
-  min-height: 8.5rem;
-  align-content: start;
-  gap: 0.55rem;
+  min-height: 9.25rem;
   border: 1px solid var(--border);
-  border-radius: 0.625rem;
+  border-radius: 0.75rem;
   background: var(--surface-raised);
-  padding: 1rem;
+  padding: 1.15rem;
   color: var(--foreground);
   text-align: left;
-  transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 .shortcut:hover {
   border-color: var(--primary);
   background: var(--surface);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(97, 175, 239, 0.2);
 }
 
-.shortcut span {
+.shortcut-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0.85rem;
+}
+
+.shortcut-icon-badge {
+  display: grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--primary);
+  transition: all 200ms ease;
+}
+
+.shortcut:hover .shortcut-icon-badge {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: #ffffff;
+  transform: scale(1.08);
+  box-shadow: 0 0 12px rgba(97, 175, 239, 0.35);
+}
+
+.shortcut-title {
   font-size: 1rem;
-  font-weight: 750;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.35rem;
 }
 
-.shortcut small {
+.shortcut-desc {
   color: var(--text-muted);
   font-size: 0.8125rem;
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
-.shortcut strong {
-  margin-top: auto;
-  color: var(--primary);
+.shortcut-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0;
+  color: var(--text-muted);
   font-family: var(--font-geist-mono), monospace;
   font-size: 0.75rem;
+  font-weight: 600;
+  transition: color 180ms ease;
+}
+
+.shortcut:hover .shortcut-arrow {
+  color: var(--primary);
+}
+
+.arrow-icon {
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shortcut:hover .arrow-icon {
+  transform: translate(2px, -2px);
 }
 
 .detail-card,
@@ -865,7 +1060,7 @@ h1 {
   padding: 1.25rem;
 }
 
-.skill-card:last-child {
+.skill-card:last-child:nth-child(odd) {
   grid-column: 1 / -1;
 }
 

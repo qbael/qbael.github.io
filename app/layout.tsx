@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { GOATCOUNTER_SITE_URL } from '@/lib/visits';
 import './globals.css';
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
@@ -24,6 +25,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <script
+          data-goatcounter={`${GOATCOUNTER_SITE_URL}/count`}
+          data-goatcounter-settings='{"path":"/","no_events":true}'
+          async
+          src="https://gc.zgo.at/count.js"
+        />
       </body>
     </html>
   );

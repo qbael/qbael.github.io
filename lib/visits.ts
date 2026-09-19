@@ -1,68 +1,24 @@
-export const VIEW_COOKIE = 'portfolio_view_counted';
-export const READ_VIEW_COUNT_SQL =
-  'SELECT total FROM page_view_counter WHERE id = ?';
-export const INCREMENT_VIEW_COUNT_SQL = `INSERT INTO page_view_counter (id, total)
-VALUES (1, 1)
-ON CONFLICT(id) DO UPDATE SET total = page_view_counter.total + 1
-RETURNING total`;
+export const GOATCOUNTER_SITE_URL = 'https://portfolio-qbael.goatcounter.com';
 
-export type ViewCountStore = {
-  read: () => Promise<unknown>;
-  increment: () => Promise<unknown>;
-};
-
-export function hasCountedView(cookieHeader: string | null) {
-  return Boolean(
-    cookieHeader
-      ?.split(';')
-      .map((cookie) => cookie.trim())
-      .includes(`${VIEW_COOKIE}=1`),
-  );
+export async function fetchVisitCount(fetcher: typeof fetch = fetch) {
+  const response = await fetcher(`${GOATCOUNTER_SITE_URL}/counter/TOTAL.json`, {
+    cache: 'no-store',
+    signal: globalThis.AbortSignal?.timeout?.(8_000),
+  });
+  if (!response.ok) throw new Error('Counter unavailable');
+  return parseVisitCount(await response.json());
 }
 
-function json(body: object, status = 200, headers: HeadersInit = {}) {
-  const responseHeaders = new Headers(headers);
-  responseHeaders.set('Cache-Control', 'no-store');
-  return Response.json(body, { status, headers: responseHeaders });
-}
-
-export async function handleVisitRequest(
-  request: Request,
-  createStore: () => ViewCountStore,
-) {
+export function parseVisitCount(value: unknown): number {
+  const count = (value as { count?: unknown } | null)?.count;
   if (
-    request.headers.get('origin') !== null &&
-    request.headers.get('origin') !== new URL(request.url).origin
+    typeof count !== 'string' ||
+    !/^(?:0|[1-9]\d*|[1-9]\d{0,2}(?:,\d{3})+)$/.test(count)
   ) {
-    return json({ error: 'forbidden' }, 403);
+    throw new Error('Invalid visit count');
   }
 
-  try {
-    const counted = hasCountedView(request.headers.get('cookie'));
-    const row = await (counted
-      ? createStore().read()
-      : createStore().increment());
-    const total = (row as { total?: unknown } | null)?.total;
-    if (
-      typeof total !== 'number' ||
-      !Number.isSafeInteger(total) ||
-      total < 0
-    ) {
-      throw new Error('Invalid page-view row');
-    }
-
-    const cookie = [
-      `${VIEW_COOKIE}=1`,
-      'Path=/',
-      'HttpOnly',
-      'SameSite=Lax',
-      new URL(request.url).protocol === 'https:' ? 'Secure' : '',
-    ]
-      .filter(Boolean)
-      .join('; ');
-
-    return json({ total }, 200, counted ? {} : { 'Set-Cookie': cookie });
-  } catch {
-    return json({ error: 'unavailable' }, 503);
-  }
+  const total = Number(count.replaceAll(',', ''));
+  if (!Number.isSafeInteger(total)) throw new Error('Unsafe visit count');
+  return total;
 }

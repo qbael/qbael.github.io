@@ -1,17 +1,26 @@
 'use client';
 
 import {
+  ArrowUpRight,
+  Briefcase,
   Code2,
+  Cpu,
   ExternalLink,
-  FileText,
-  Mail,
+  FolderGit2,
   Menu,
-  Network,
   X,
 } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import {
+  FaEnvelope,
+  FaFacebook,
+  FaFilePdf,
+  FaGithub,
+  FaLinkedin,
+} from 'react-icons/fa6';
 
+import { FileGlyph } from '@/components/file-glyph';
 import {
   Drawer,
   DrawerClose,
@@ -32,18 +41,19 @@ import {
   type NavigationOrigin,
   type WorkspaceState,
 } from '@/lib/tabs';
+import { fetchVisitCount } from '@/lib/visits';
 
 const sectionFiles = [
   { id: 'about', label: 'About', filename: 'about.tsx' },
-  { id: 'education', label: 'Education', filename: 'education.md' },
+  { id: 'education', label: 'Education', filename: 'education.json' },
   {
     id: 'achievements',
     label: 'Achievements & Awards',
-    filename: 'achievements.md',
+    filename: 'achievements.yaml',
   },
   { id: 'experience', label: 'Work Experience', filename: 'experience.ts' },
   { id: 'projects', label: 'Projects', filename: 'projects.json' },
-  { id: 'skills', label: 'Skills & Tech Stack', filename: 'skills.json' },
+  { id: 'skills', label: 'Skills & Tech Stack', filename: 'skills.toml' },
   { id: 'visitors', label: 'Visitor Statistics', filename: 'visitors.log' },
 ] as const;
 
@@ -52,7 +62,7 @@ const projects = [
     id: 'project-instory',
     name: 'Instory',
     title: 'Instory — Social Media Platform',
-    filename: 'instory.md',
+    filename: 'Instory.cs',
     dates: 'Mar–May 2026',
     summary:
       'A full-stack Instagram-like platform with real-time chat, story sharing, and social features built with ASP.NET Core and React.',
@@ -79,7 +89,7 @@ const projects = [
     id: 'project-smartdoc',
     name: 'SmartDoc AI',
     title: 'SmartDoc AI — Intelligent Document Q&A',
-    filename: 'smartdoc-ai.md',
+    filename: 'smartdoc.py',
     dates: 'Mar–May 2026',
     summary:
       'An intelligent document Q&A system combining standard RAG and Corrective RAG with hybrid retrieval and local language-model inference.',
@@ -106,7 +116,7 @@ const projects = [
     id: 'project-medify',
     name: 'Medify',
     title: 'Medify — Medical Appointment Scheduling',
-    filename: 'medify.md',
+    filename: 'Medify.java',
     dates: 'Oct–Dec 2025',
     summary:
       'A full-stack appointment platform with real-time availability, multi-provider support, and flexible deployment.',
@@ -130,7 +140,7 @@ const projects = [
     id: 'project-phone-store',
     name: 'Phone Store',
     title: 'Phone Store Management System',
-    filename: 'phone-store.md',
+    filename: 'phone-store.php',
     dates: '2025',
     summary:
       'A practical system for managing inventory, sales, orders, customers, and reporting in a phone store.',
@@ -147,7 +157,7 @@ const projects = [
     id: 'project-school-bus',
     name: 'School Bus',
     title: 'School Bus Tracking System',
-    filename: 'school-bus.md',
+    filename: 'school-bus.ts',
     dates: '2025',
     summary:
       'A real-time school transportation system for live bus locations, routes, notifications, and pickup planning.',
@@ -172,7 +182,7 @@ const projects = [
     id: 'project-sport-store',
     name: 'Sport Store',
     title: 'Sport Store Management System',
-    filename: 'sport-store.md',
+    filename: 'sport-store.sql',
     dates: '2024',
     summary:
       'A retail management system covering products, inventory, sales, customers, loyalty, and business reporting.',
@@ -193,37 +203,33 @@ const skillGroups = [
     name: 'Languages',
     skills: ['Java', 'C#', 'JavaScript', 'TypeScript', 'Python', 'PHP'],
   },
-  { name: 'Frontend', skills: ['React', 'Next.js', 'Tailwind CSS', 'Vite'] },
   {
-    name: 'Backend',
-    skills: [
-      'Spring Framework',
-      '.NET',
-      'Node.js',
-      'Express',
-      'FastAPI',
-      'REST APIs',
-      'WebSocket',
-      'SignalR',
-      'JWT',
-      'Kafka',
-      'Microservices',
-    ],
+    name: 'Frontend',
+    skills: ['React', 'Next.js', 'Tailwind CSS', 'Vite'],
+  },
+  {
+    name: 'Mobile Development',
+    skills: ['React Native', 'Flutter'],
+  },
+  {
+    name: 'Backend Frameworks',
+    skills: ['Spring Boot', '.NET', 'Node.js', 'Express.js', 'FastAPI'],
+  },
+  {
+    name: 'Architecture & Protocols',
+    skills: ['REST APIs', 'Microservices', 'WebSocket', 'SignalR', 'JWT'],
+  },
+  {
+    name: 'Data & Messaging',
+    skills: ['PostgreSQL', 'MySQL', 'Supabase', 'Kafka'],
   },
   {
     name: 'DevOps & Cloud',
     skills: ['Docker', 'Kubernetes', 'AWS', 'GitHub Actions', 'Linux'],
   },
   {
-    name: 'Tools & Databases',
-    skills: [
-      'PostgreSQL',
-      'MySQL',
-      'Git',
-      'Postman',
-      'VS Code',
-      'IntelliJ IDEA',
-    ],
+    name: 'Tools & Testing',
+    skills: ['Git', 'Jest', 'Postman', 'VS Code', 'IntelliJ IDEA'],
   },
 ] as const;
 
@@ -294,17 +300,29 @@ function AboutFile({
   openFile: (id: FileId, origin: NavigationOrigin) => void;
 }) {
   const links = [
-    { label: 'View GitHub', href: 'https://github.com/qbael', icon: Code2 },
+    {
+      label: 'View GitHub',
+      href: 'https://github.com/qbael',
+      icon: FaGithub,
+      variant: 'github',
+    },
     {
       label: 'Open LinkedIn',
       href: 'https://www.linkedin.com/in/ho-quoc-bao-76a759295/',
-      icon: Network,
+      icon: FaLinkedin,
+      variant: 'linkedin',
     },
-    { label: 'Email Bao', href: 'mailto:baohoo10205@gmail.com', icon: Mail },
+    {
+      label: 'Email Bao',
+      href: 'mailto:baohoo10205@gmail.com',
+      icon: FaEnvelope,
+      variant: 'email',
+    },
     {
       label: 'Open Facebook',
       href: 'https://www.facebook.com/baohoo10205/',
-      icon: Network,
+      icon: FaFacebook,
+      variant: 'facebook',
     },
   ];
 
@@ -332,25 +350,25 @@ function AboutFile({
             sustainable.”
           </blockquote>
           <div className="actions" aria-label="Profile links">
-            {links.map(({ label, href, icon: Icon }) => (
+            {links.map(({ label, href, icon: Icon, variant }) => (
               <a
-                className="action"
+                className={`action action-${variant}`}
                 href={href}
                 key={label}
                 target={href.startsWith('http') ? '_blank' : undefined}
                 rel={href.startsWith('http') ? 'noreferrer' : undefined}
               >
-                <Icon aria-hidden="true" size={16} />
+                <Icon aria-hidden="true" className="action-icon" size={16} />
                 {label}
               </a>
             ))}
             <a
-              className="action action-primary"
+              className="action action-primary action-cv"
               href="/Ho-Quoc-Bao-Resume.pdf"
               target="_blank"
               rel="noreferrer"
             >
-              <FileText aria-hidden="true" size={16} />
+              <FaFilePdf aria-hidden="true" className="action-icon" size={15} />
               View CV
             </a>
           </div>
@@ -364,30 +382,46 @@ function AboutFile({
         </div>
         <div className="shortcut-grid">
           {[
-            [
-              'experience',
-              'Work Experience',
-              'The role and outcomes behind my recent work.',
-            ],
-            [
-              'projects',
-              'Projects',
-              'Six full-stack products and engineering case studies.',
-            ],
-            [
-              'skills',
-              'Skills',
-              'The languages, frameworks, and tools I build with.',
-            ],
-          ].map(([id, label, description]) => (
+            {
+              id: 'experience',
+              label: 'Work Experience',
+              description: 'The role and outcomes behind my recent work.',
+              icon: Briefcase,
+            },
+            {
+              id: 'projects',
+              label: 'Projects',
+              description:
+                'Six full-stack products and engineering case studies.',
+              icon: FolderGit2,
+            },
+            {
+              id: 'skills',
+              label: 'Skills',
+              description: 'The languages, frameworks, and tools I build with.',
+              icon: Cpu,
+            },
+          ].map(({ id, label, description, icon: Icon }) => (
             <button
               className="shortcut"
               key={id}
               onClick={() => openFile(id as FileId, 'shortcut')}
             >
-              <span>{label}</span>
-              <small>{description}</small>
-              <strong aria-hidden="true">Open ↗</strong>
+              <div className="shortcut-header">
+                <div className="shortcut-icon-badge">
+                  <Icon aria-hidden="true" size={18} />
+                </div>
+                <strong aria-hidden="true" className="shortcut-arrow">
+                  Open{' '}
+                  <ArrowUpRight
+                    aria-hidden="true"
+                    className="arrow-icon"
+                    size={14}
+                  />
+                </strong>
+              </div>
+              <span className="shortcut-title">{label}</span>
+              <small className="shortcut-desc">{description}</small>
             </button>
           ))}
         </div>
@@ -401,7 +435,7 @@ function EducationFile() {
     <>
       <SectionHeader
         id="education"
-        path="education.md"
+        path={fileMeta('education').filename}
         title="Education"
         lead="A focused foundation in software engineering and information technology."
       />
@@ -438,7 +472,7 @@ function AchievementsFile() {
     <>
       <SectionHeader
         id="achievements"
-        path="achievements.md"
+        path={fileMeta('achievements').filename}
         title="Achievements & Awards"
         lead="Recognition earned through consistent academic performance."
       />
@@ -464,7 +498,7 @@ function ExperienceFile() {
     <>
       <SectionHeader
         id="experience"
-        path="experience.ts"
+        path={fileMeta('experience').filename}
         title="Work Experience"
         lead="Applied product engineering across mobile, music notation, data, and quality."
       />
@@ -513,7 +547,7 @@ function ProjectsFile({
     <>
       <SectionHeader
         id="projects"
-        path="projects.json"
+        path={fileMeta('projects').filename}
         title="Selected Projects"
         lead="Six products spanning social platforms, AI, healthcare, real-time tracking, and retail operations."
       />
@@ -603,7 +637,7 @@ function SkillsFile() {
     <>
       <SectionHeader
         id="skills"
-        path="skills.json"
+        path={fileMeta('skills').filename}
         title="Skills & Tech Stack"
         lead="The technologies I use to shape maintainable products from interface to infrastructure."
       />
@@ -643,12 +677,12 @@ function VisitorsFile({
     <>
       <SectionHeader
         id="visitors"
-        path="visitors.log"
+        path={fileMeta('visitors').filename}
         title="Visitor Statistics"
-        lead="A simple, privacy-respecting aggregate of portfolio page views."
+        lead="A simple, privacy-respecting count of portfolio visits."
       />
       <article className="visitor-card">
-        <p className="card-meta">Total page views</p>
+        <p className="card-meta">Total visits</p>
         {visits.status === 'loading' && (
           <>
             <div className="visitor-skeleton" aria-hidden="true" />
@@ -666,9 +700,12 @@ function VisitorsFile({
               aria-live={announce ? 'polite' : undefined}
               aria-atomic={announce ? 'true' : undefined}
             >
-              Total page views: {visits.total.toLocaleString('en-US')}.
+              Total visits: {visits.total.toLocaleString('en-US')}.
             </p>
-            <p>Counted once per browser session.</p>
+            <p>
+              Repeat loads in one GoatCounter session are grouped; totals may
+              lag.
+            </p>
           </>
         )}
         {visits.status === 'unavailable' && (
@@ -682,17 +719,17 @@ function VisitorsFile({
               aria-live={announce ? 'polite' : undefined}
               aria-atomic={announce ? 'true' : undefined}
             >
-              Page-view count unavailable.
+              Visit count unavailable.
             </p>
             <p>
-              The page-view count is temporarily unavailable. The rest of the
+              The visit count is temporarily unavailable. The rest of the
               portfolio is unaffected.
             </p>
           </>
         )}
         <div className="privacy-note">
-          <i aria-hidden="true" /> No IP addresses, device fingerprints, or
-          personal visitor records are stored.
+          <i aria-hidden="true" /> GoatCounter stores aggregate statistics, not
+          IP addresses or personal visitor records.
         </div>
       </article>
     </>
@@ -723,7 +760,7 @@ function Explorer({
         openFile(file.id, origin);
       }}
     >
-      <FileText aria-hidden="true" size={15} />
+      <FileGlyph filename={file.filename} size={15} />
       <span>{file.filename}</span>
     </a>
   );
@@ -764,7 +801,7 @@ function Explorer({
                             openFile(project.id, origin);
                           }}
                         >
-                          <Code2 aria-hidden="true" size={14} />
+                          <FileGlyph filename={project.filename} size={14} />
                           <span>{project.filename}</span>
                         </a>
                       </li>
@@ -895,21 +932,9 @@ export default function Home() {
 
   useEffect(() => {
     let cancelled = false;
-    fetch('/api/visits', {
-      method: 'POST',
-      cache: 'no-store',
-      signal: AbortSignal.timeout(8_000),
-    })
-      .then(async (response) => {
-        if (!response.ok) throw new Error('Counter unavailable');
-        const data = (await response.json()) as { total?: unknown };
-        if (
-          typeof data.total !== 'number' ||
-          !Number.isSafeInteger(data.total) ||
-          data.total < 0
-        )
-          throw new Error('Invalid counter');
-        if (!cancelled) setVisits({ status: 'loaded', total: data.total });
+    fetchVisitCount()
+      .then((total) => {
+        if (!cancelled) setVisits({ status: 'loaded', total });
       })
       .catch(() => {
         if (!cancelled) setVisits({ status: 'unavailable' });
@@ -1012,11 +1037,7 @@ export default function Home() {
                           })
                         }
                       >
-                        {isProject(id) ? (
-                          <Code2 aria-hidden="true" size={14} />
-                        ) : (
-                          <FileText aria-hidden="true" size={14} />
-                        )}
+                        <FileGlyph filename={meta.filename} size={14} />
                         {meta.filename}
                       </TabsTrigger>
                       <button
