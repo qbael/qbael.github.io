@@ -899,6 +899,44 @@ h1 {
   transform: translateY(-2px);
 }
 
+.project-preview {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin: -0.35rem -0.35rem 1rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 0.45rem;
+  background: var(--surface-raised);
+}
+
+.project-preview img,
+.project-screenshot img {
+  object-fit: cover;
+  object-position: top;
+}
+
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.project-shot {
+  min-width: 0;
+  margin: 0;
+}
+
+.project-shot:first-child {
+  grid-column: 1 / -1;
+}
+
+.project-shot figcaption {
+  margin-top: 0.45rem;
+  color: var(--text-muted);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.72rem;
+}
+
 .project-index {
   position: absolute;
   top: 0.5rem;
@@ -994,56 +1032,23 @@ h1 {
   font-size: 0.72rem;
 }
 
-.screenshot-placeholder {
+.project-screenshot {
   position: relative;
-  display: grid;
-  min-height: 17rem;
-  place-items: center;
-  align-content: center;
-  gap: 0.5rem;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
-  border: 1px dashed var(--border);
-  border-radius: 0.625rem;
-  background-color: var(--surface-raised);
-  background-image:
-    linear-gradient(rgb(171 178 191 / 5%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(171 178 191 / 5%) 1px, transparent 1px);
-  background-size: 1.5rem 1.5rem;
-  color: var(--text-muted);
-  text-align: center;
-}
-
-.screenshot-placeholder::after {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle, transparent 20%, var(--surface-raised) 85%);
-  content: '';
-}
-
-.screenshot-placeholder > * {
-  position: relative;
-  z-index: 1;
-}
-
-.placeholder-icon {
-  display: grid;
-  width: 3.25rem;
-  height: 3.25rem;
-  place-items: center;
   border: 1px solid var(--border);
   border-radius: 0.625rem;
-  background: var(--surface);
-  color: var(--primary);
+  background: var(--surface-raised);
 }
 
-.screenshot-placeholder strong {
-  color: var(--foreground);
-}
+@media (max-width: 700px) {
+  .project-gallery {
+    grid-template-columns: 1fr;
+  }
 
-.screenshot-placeholder span {
-  max-width: 28rem;
-  padding: 0 1rem;
-  font-size: 0.8rem;
+  .project-shot:first-child {
+    grid-column: auto;
+  }
 }
 
 .repo-action {

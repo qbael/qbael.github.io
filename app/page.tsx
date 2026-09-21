@@ -3,7 +3,6 @@
 import {
   ArrowUpRight,
   Briefcase,
-  Code2,
   Cpu,
   ExternalLink,
   FolderGit2,
@@ -64,6 +63,11 @@ const projects = [
     title: 'Instory — Social Media Platform',
     filename: 'Instory.cs',
     dates: 'Mar–May 2026',
+    screenshots: [
+      { src: '/projects/instory-feed.jpg', label: 'Social feed & stories' },
+      { src: '/projects/instory-chat.jpg', label: 'Real-time messaging' },
+      { src: '/projects/instory-admin.jpg', label: 'Community administration' },
+    ],
     summary:
       'A full-stack Instagram-like platform with real-time chat, story sharing, and social features built with ASP.NET Core and React.',
     built: [
@@ -91,6 +95,11 @@ const projects = [
     title: 'SmartDoc AI — Intelligent Document Q&A',
     filename: 'smartdoc.py',
     dates: 'Mar–May 2026',
+    screenshots: [
+      { src: '/projects/smartdoc-answer.jpg', label: 'RAG answer workspace' },
+      { src: '/projects/smartdoc-citations.jpg', label: 'Citation evidence' },
+      { src: '/projects/smartdoc-documents.jpg', label: 'Document indexing' },
+    ],
     summary:
       'An intelligent document Q&A system combining standard RAG and Corrective RAG with hybrid retrieval and local language-model inference.',
     built: [
@@ -118,6 +127,11 @@ const projects = [
     title: 'Medify — Medical Appointment Scheduling',
     filename: 'Medify.java',
     dates: 'Oct–Dec 2025',
+    screenshots: [
+      { src: '/projects/medify-home.jpg', label: 'Patient landing page' },
+      { src: '/projects/medify-doctors.jpg', label: 'Doctor discovery' },
+      { src: '/projects/medify-booking.jpg', label: 'Appointment booking' },
+    ],
     summary:
       'A full-stack appointment platform with real-time availability, multi-provider support, and flexible deployment.',
     built: [
@@ -142,6 +156,11 @@ const projects = [
     title: 'Phone Store Management System',
     filename: 'phone-store.php',
     dates: '2025',
+    screenshots: [
+      { src: '/projects/phone-store-home.jpg', label: 'Storefront' },
+      { src: '/projects/phone-store-products.jpg', label: 'Product catalog' },
+      { src: '/projects/phone-store-admin.jpg', label: 'Sales dashboard' },
+    ],
     summary:
       'A practical system for managing inventory, sales, orders, customers, and reporting in a phone store.',
     built: [
@@ -159,6 +178,11 @@ const projects = [
     title: 'School Bus Tracking System',
     filename: 'school-bus.ts',
     dates: '2025',
+    screenshots: [
+      { src: '/projects/school-bus-dashboard-v2.jpg', label: 'Operations dashboard' },
+      { src: '/projects/school-bus-schedules.jpg', label: 'Bus schedules' },
+      { src: '/projects/school-bus-routes.jpg', label: 'Route management' },
+    ],
     summary:
       'A real-time school transportation system for live bus locations, routes, notifications, and pickup planning.',
     built: [
@@ -184,6 +208,11 @@ const projects = [
     title: 'Sport Store Management System',
     filename: 'sport-store.sql',
     dates: '2024',
+    screenshots: [
+      { src: '/projects/sport-store-home.jpg', label: 'Retail storefront' },
+      { src: '/projects/sport-store-products.jpg', label: 'Product catalog' },
+      { src: '/projects/sport-store-analytics.jpg', label: 'Business analytics' },
+    ],
     summary:
       'A retail management system covering products, inventory, sales, customers, loyalty, and business reporting.',
     built: [
@@ -557,6 +586,14 @@ function ProjectsFile({
             <div className="project-index">
               {String(index + 1).padStart(2, '0')}
             </div>
+            <div className="project-preview">
+              <Image
+                src={project.screenshots[0].src}
+                alt={`${project.name} interface preview`}
+                fill
+                sizes="(max-width: 700px) 100vw, 50vw"
+              />
+            </div>
             <p className="card-meta">{project.dates}</p>
             <h2>{project.name}</h2>
             <p>{project.summary}</p>
@@ -611,12 +648,20 @@ function ProjectFile({ project }: { project: (typeof projects)[number] }) {
         </section>
         <section>
           <p className="section-label">Interface preview</p>
-          <div className="screenshot-placeholder">
-            <div className="placeholder-icon" aria-hidden="true">
-              <Code2 size={26} />
-            </div>
-            <strong>Screenshot coming soon</strong>
-            <span>A real product image will appear here when supplied.</span>
+          <div className="project-gallery">
+            {project.screenshots.map((screenshot) => (
+              <figure className="project-shot" key={screenshot.src}>
+                <div className="project-screenshot">
+                  <Image
+                    src={screenshot.src}
+                    alt={`${project.name}: ${screenshot.label}`}
+                    fill
+                    sizes="(max-width: 700px) 100vw, 50vw"
+                  />
+                </div>
+                <figcaption>{screenshot.label}</figcaption>
+              </figure>
+            ))}
           </div>
         </section>
         <a
