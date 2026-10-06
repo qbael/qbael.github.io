@@ -47,8 +47,8 @@ const sectionFiles = [
   { id: 'education', label: 'Education', filename: 'education.json' },
   {
     id: 'achievements',
-    label: 'Achievements & Awards',
-    filename: 'achievements.yaml',
+    label: 'Certificate and Award',
+    filename: 'certificates.yaml',
   },
   { id: 'experience', label: 'Work Experience', filename: 'experience.ts' },
   { id: 'projects', label: 'Projects', filename: 'projects.json' },
@@ -88,6 +88,7 @@ const projects = [
       'GitHub Actions',
     ],
     repo: 'https://github.com/qbael/Instory',
+    live: 'https://d3bxzivb46uej3.cloudfront.net/',
   },
   {
     id: 'project-smartdoc',
@@ -496,15 +497,23 @@ function EducationFile() {
   );
 }
 
-function AchievementsFile() {
+function CertificateAndAwardFile() {
   return (
     <>
       <SectionHeader
         id="achievements"
         path={fileMeta('achievements').filename}
-        title="Achievements & Awards"
-        lead="Recognition earned through consistent academic performance."
+        title="Certificate and Award"
+        lead="English proficiency and recognition earned through consistent academic performance."
       />
+      <article className="detail-card award-card">
+        <span className="award-count">905</span>
+        <div>
+          <p className="card-meta">Total score / 990</p>
+          <h2>TOEIC Listening &amp; Reading</h2>
+          <p className="body-copy">Listening: 495 · Reading: 410</p>
+        </div>
+      </article>
       <article className="detail-card award-card">
         <span className="award-count" aria-hidden="true">
           06
@@ -664,14 +673,26 @@ function ProjectFile({ project }: { project: (typeof projects)[number] }) {
             ))}
           </div>
         </section>
-        <a
-          className="action action-primary repo-action"
-          href={project.repo}
-          target="_blank"
-          rel="noreferrer"
-        >
-          View GitHub repository <ExternalLink aria-hidden="true" size={16} />
-        </a>
+        <div className="actions">
+          <a
+            className="action action-primary repo-action"
+            href={project.repo}
+            target="_blank"
+            rel="noreferrer"
+          >
+            View GitHub repository <ExternalLink aria-hidden="true" size={16} />
+          </a>
+          {'live' in project && (
+            <a
+              className="action"
+              href={project.live}
+              target="_blank"
+              rel="noreferrer"
+            >
+              View live demo <ExternalLink aria-hidden="true" size={16} />
+            </a>
+          )}
+        </div>
       </article>
     </>
   );
@@ -884,7 +905,7 @@ function Surface({
     case 'education':
       return <EducationFile />;
     case 'achievements':
-      return <AchievementsFile />;
+      return <CertificateAndAwardFile />;
     case 'experience':
       return <ExperienceFile />;
     case 'projects':

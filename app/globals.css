@@ -806,6 +806,10 @@ h1 {
   overflow: hidden;
 }
 
+.award-card + .award-card {
+  margin-top: 1rem;
+}
+
 .award-count {
   flex: none;
   color: var(--primary);
