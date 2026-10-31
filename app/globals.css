@@ -913,10 +913,17 @@ h1 {
   background: var(--surface-raised);
 }
 
-.project-preview img,
-.project-screenshot img {
+.project-preview img {
   object-fit: cover;
   object-position: top;
+}
+
+.project-screenshot img {
+  object-fit: contain;
+}
+
+.project-image-note {
+  margin-bottom: 1rem;
 }
 
 .project-gallery {
@@ -1007,8 +1014,10 @@ h1 {
   font-size: 0.9rem;
 }
 
-.section-label {
+.section-label,
+.case-study .section-label {
   margin: 0 0 0.75rem;
+  font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -1038,6 +1047,7 @@ h1 {
 
 .project-screenshot {
   position: relative;
+  display: block;
   aspect-ratio: 16 / 10;
   overflow: hidden;
   border: 1px solid var(--border);

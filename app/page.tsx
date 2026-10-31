@@ -41,6 +41,7 @@ import {
   type WorkspaceState,
 } from '@/lib/tabs';
 import { fetchVisitCount } from '@/lib/visits';
+import { projects } from '@/lib/projects';
 
 const sectionFiles = [
   { id: 'about', label: 'About', filename: 'about.tsx' },
@@ -54,178 +55,6 @@ const sectionFiles = [
   { id: 'projects', label: 'Projects', filename: 'projects.json' },
   { id: 'skills', label: 'Skills & Tech Stack', filename: 'skills.toml' },
   { id: 'visitors', label: 'Visitor Statistics', filename: 'visitors.log' },
-] as const;
-
-const projects = [
-  {
-    id: 'project-instory',
-    name: 'Instory',
-    title: 'Instory — Social Media Platform',
-    filename: 'Instory.cs',
-    dates: 'Mar–May 2026',
-    screenshots: [
-      { src: '/projects/instory-feed.jpg', label: 'Social feed & stories' },
-      { src: '/projects/instory-chat.jpg', label: 'Real-time messaging' },
-      { src: '/projects/instory-admin.jpg', label: 'Community administration' },
-    ],
-    summary:
-      'A full-stack Instagram-like platform with real-time chat, story sharing, and social features built with ASP.NET Core and React.',
-    built: [
-      'Built posts, stories, highlights, hashtag trends, friend requests, and an administration dashboard.',
-      'Delivered direct and group chat plus live notifications with SignalR and media uploads to AWS S3.',
-      'Added Google OAuth, OTP email verification, clean repository and service layers, and hybrid hashtag and post search.',
-      'Created role-based administration for users and reports, including story archives and highlights.',
-      'Reached 60% unit and integration test coverage and automated Docker delivery to AWS EC2 through GitHub Actions and Amazon ECR.',
-    ],
-    tech: [
-      'ASP.NET Core',
-      'React',
-      'Tailwind CSS',
-      'PostgreSQL',
-      'SignalR',
-      'AWS S3',
-      'Docker',
-      'GitHub Actions',
-    ],
-    repo: 'https://github.com/qbael/Instory',
-    live: 'https://d3bxzivb46uej3.cloudfront.net/',
-  },
-  {
-    id: 'project-smartdoc',
-    name: 'SmartDoc AI',
-    title: 'SmartDoc AI — Intelligent Document Q&A',
-    filename: 'smartdoc.py',
-    dates: 'Mar–May 2026',
-    screenshots: [
-      { src: '/projects/smartdoc-answer.jpg', label: 'RAG answer workspace' },
-      { src: '/projects/smartdoc-citations.jpg', label: 'Citation evidence' },
-      { src: '/projects/smartdoc-documents.jpg', label: 'Document indexing' },
-    ],
-    summary:
-      'An intelligent document Q&A system combining standard RAG and Corrective RAG with hybrid retrieval and local language-model inference.',
-    built: [
-      'Ran standard RAG and Corrective RAG in parallel, used a CrossEncoder to evaluate context quality, rewrote weak queries, and used web search as a fallback.',
-      'Combined FAISS semantic search and BM25 keyword search with Reciprocal Rank Fusion, multiple file types, and EasyOCR support.',
-      'Supported local Ollama inference and a Google Colab plus ngrok path for GPU-accelerated inference.',
-      'Streamed uploads and answers with SSE, stored conversational history in SQLite, and surfaced self-evaluated confidence scores.',
-    ],
-    tech: [
-      'FastAPI',
-      'React',
-      'LangChain',
-      'FAISS',
-      'BM25',
-      'Ollama',
-      'EasyOCR',
-      'SQLite',
-      'Tavily',
-    ],
-    repo: 'https://github.com/qbael/SmartDoc-AI',
-  },
-  {
-    id: 'project-medify',
-    name: 'Medify',
-    title: 'Medify — Medical Appointment Scheduling',
-    filename: 'Medify.java',
-    dates: 'Oct–Dec 2025',
-    screenshots: [
-      { src: '/projects/medify-home.jpg', label: 'Patient landing page' },
-      { src: '/projects/medify-doctors.jpg', label: 'Doctor discovery' },
-      { src: '/projects/medify-booking.jpg', label: 'Appointment booking' },
-    ],
-    summary:
-      'A full-stack appointment platform with real-time availability, multi-provider support, and flexible deployment.',
-    built: [
-      'Designed a scalable microservices architecture with Spring Cloud API Gateway for centralized routing and load balancing.',
-      'Supported personal clinics, multiple providers, appointment management, and scheduling-conflict prevention.',
-      'Built a patient-facing experience for booking and managing appointments.',
-      'Prepared the system for on-premises or cloud deployment with multi-tenant support.',
-    ],
-    tech: [
-      'Next.js',
-      'Tailwind CSS',
-      'Spring Boot',
-      'PostgreSQL',
-      'Docker',
-      'Kubernetes',
-    ],
-    repo: 'https://github.com/qbael/Medify',
-  },
-  {
-    id: 'project-phone-store',
-    name: 'Phone Store',
-    title: 'Phone Store Management System',
-    filename: 'phone-store.php',
-    dates: '2025',
-    screenshots: [
-      { src: '/projects/phone-store-home.jpg', label: 'Storefront' },
-      { src: '/projects/phone-store-products.jpg', label: 'Product catalog' },
-      { src: '/projects/phone-store-admin.jpg', label: 'Sales dashboard' },
-    ],
-    summary:
-      'A practical system for managing inventory, sales, orders, customers, and reporting in a phone store.',
-    built: [
-      'Built stock tracking, product inventory, and automated low-stock alerts.',
-      'Implemented sales processing, invoice generation, and customer purchase history.',
-      'Created a reporting dashboard for sales analytics and performance metrics.',
-      'Used a focused monolithic architecture to keep delivery and operation straightforward.',
-    ],
-    tech: ['React', 'Tailwind CSS', 'PHP', 'MySQL', 'Docker'],
-    repo: 'https://github.com/qbael/PhoneStore',
-  },
-  {
-    id: 'project-school-bus',
-    name: 'School Bus',
-    title: 'School Bus Tracking System',
-    filename: 'school-bus.ts',
-    dates: '2025',
-    screenshots: [
-      { src: '/projects/school-bus-dashboard-v2.jpg', label: 'Operations dashboard' },
-      { src: '/projects/school-bus-schedules.jpg', label: 'Bus schedules' },
-      { src: '/projects/school-bus-routes.jpg', label: 'Route management' },
-    ],
-    summary:
-      'A real-time school transportation system for live bus locations, routes, notifications, and pickup planning.',
-    built: [
-      'Streamed bus locations through WebSocket for timely tracking updates.',
-      'Visualized routes and pickup or drop-off points with the Mapbox API.',
-      'Built notifications for parents and school administrators.',
-      'Added route management and scheduling to improve transportation safety and communication.',
-    ],
-    tech: [
-      'Next.js',
-      'Tailwind CSS',
-      'Node.js',
-      'Express',
-      'PostgreSQL',
-      'WebSocket',
-      'Mapbox API',
-    ],
-    repo: 'https://github.com/qbael/School-Bus-Management-System',
-  },
-  {
-    id: 'project-sport-store',
-    name: 'Sport Store',
-    title: 'Sport Store Management System',
-    filename: 'sport-store.sql',
-    dates: '2024',
-    screenshots: [
-      { src: '/projects/sport-store-home.jpg', label: 'Retail storefront' },
-      { src: '/projects/sport-store-products.jpg', label: 'Product catalog' },
-      { src: '/projects/sport-store-analytics.jpg', label: 'Business analytics' },
-    ],
-    summary:
-      'A retail management system covering products, inventory, sales, customers, loyalty, and business reporting.',
-    built: [
-      'Used a Spring Boot monolith to keep development fast and the operating model straightforward.',
-      'Built product categorization, inventory tracking, and stock alerts.',
-      'Implemented sales and order-lifecycle management.',
-      'Added customer relationship and loyalty tracking.',
-      'Created reporting and analytics views for day-to-day business insight.',
-    ],
-    tech: ['React', 'Tailwind CSS', 'Spring Boot', 'MySQL'],
-    repo: 'https://github.com/qbael/SportStore',
-  },
 ] as const;
 
 const skillGroups = [
@@ -422,7 +251,7 @@ function AboutFile({
               id: 'projects',
               label: 'Projects',
               description:
-                'Six full-stack products and engineering case studies.',
+                `${projects.length} products, led by Findie, Medify and Instory.`,
               icon: FolderGit2,
             },
             {
@@ -587,7 +416,7 @@ function ProjectsFile({
         id="projects"
         path={fileMeta('projects').filename}
         title="Selected Projects"
-        lead="Six products spanning social platforms, AI, healthcare, real-time tracking, and retail operations."
+        lead="Explore Findie, Medify and Instory first, followed by document AI, retail and school transport projects."
       />
       <div className="projects-grid">
         {projects.map((project, index) => (
@@ -636,11 +465,46 @@ function ProjectFile({ project }: { project: (typeof projects)[number] }) {
           </div>
           <div>
             <span>Status</span>
-            <strong>Completed</strong>
+            <strong>{project.status}</strong>
           </div>
         </div>
         <section>
-          <p className="section-label">What I built</p>
+          <h2 className="section-label">Inside the application</h2>
+          <p className="body-copy project-image-note">
+            {project.imageNote} Open an image to view it at full size.
+          </p>
+          <div className="project-gallery">
+            {project.screenshots.map((screenshot) => (
+              <figure className="project-shot" key={screenshot.src}>
+                <a
+                  className="project-screenshot"
+                  href={screenshot.src}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`View full-size image: ${project.name} — ${screenshot.label}`}
+                >
+                  <Image
+                    src={screenshot.src}
+                    alt={`${project.name}: ${screenshot.label}`}
+                    fill
+                    sizes="(max-width: 700px) 100vw, 1000px"
+                  />
+                </a>
+                <figcaption>{screenshot.label}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+        <section>
+          <h2 className="section-label">The problem</h2>
+          <p className="body-copy">{project.problem}</p>
+        </section>
+        <section>
+          <h2 className="section-label">What it does</h2>
+          <p className="body-copy">{project.capabilities}</p>
+        </section>
+        <section>
+          <h2 className="section-label">What I built</h2>
           <ul className="work-list">
             {project.built.map((item) => (
               <li key={item}>{item}</li>
@@ -648,30 +512,16 @@ function ProjectFile({ project }: { project: (typeof projects)[number] }) {
           </ul>
         </section>
         <section>
-          <p className="section-label">Technologies & tools</p>
+          <h2 className="section-label">Architecture</h2>
+          <p className="body-copy">{project.architecture}</p>
+        </section>
+        <section>
+          <h2 className="section-label">Technologies & tools</h2>
           <ul className="tag-list" aria-label={`${project.name} technologies`}>
             {project.tech.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
-        </section>
-        <section>
-          <p className="section-label">Interface preview</p>
-          <div className="project-gallery">
-            {project.screenshots.map((screenshot) => (
-              <figure className="project-shot" key={screenshot.src}>
-                <div className="project-screenshot">
-                  <Image
-                    src={screenshot.src}
-                    alt={`${project.name}: ${screenshot.label}`}
-                    fill
-                    sizes="(max-width: 700px) 100vw, 50vw"
-                  />
-                </div>
-                <figcaption>{screenshot.label}</figcaption>
-              </figure>
-            ))}
-          </div>
         </section>
         <div className="actions">
           <a

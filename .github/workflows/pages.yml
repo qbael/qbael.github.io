@@ -32,11 +32,11 @@ jobs:
 
       - name: Test and type-check
         run: |
-          node --test lib/tabs.test.ts
+          node --test lib/*.test.ts
           npx tsc --noEmit
 
       - name: Lint changed source
-        run: npx oxlint app/layout.tsx app/page.tsx components/file-glyph.tsx lib/files.ts lib/visits.ts lib/tabs.test.ts next.config.ts vite.config.ts scripts/check-static-export.mjs
+        run: npx oxlint app/layout.tsx app/page.tsx components/file-glyph.tsx lib/files.ts lib/visits.ts lib/tabs.test.ts lib/projects.ts lib/projects.test.ts next.config.ts vite.config.ts scripts/check-static-export.mjs
 
       - name: Build static site
         run: npm run build
