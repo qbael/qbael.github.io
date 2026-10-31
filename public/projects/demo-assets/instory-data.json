@@ -1,0 +1,961 @@
+{
+  "demo": true,
+  "notice": "Fictional profiles, posts, vector artwork and conversations for screenshots of the original Instory interface.",
+  "users": [
+    {
+      "id": 1,
+      "userName": "linh.nguyen",
+      "fullName": "Linh Nguyễn",
+      "bio": "Lưu giữ những điều bình dị. Sài Gòn, những chuyến đi và một chút sáng tạo.",
+      "email": "linh.nguyen@example.test",
+      "avatarUrl": "/demo-assets/instory-linh.svg",
+      "createdAt": "2026-03-15T08:00:00Z",
+      "updatedAt": null,
+      "roles": [
+        "User",
+        "Admin"
+      ],
+      "isBlocked": false
+    },
+    {
+      "id": 2,
+      "userName": "minh.anh",
+      "fullName": "Minh Anh",
+      "bio": "Khám phá và kể chuyện bằng nét vẽ.",
+      "email": "minh.anh@example.test",
+      "avatarUrl": "/demo-assets/instory-minh.svg",
+      "createdAt": "2026-03-15T08:00:00Z",
+      "updatedAt": null,
+      "roles": [
+        "User"
+      ],
+      "isBlocked": false
+    },
+    {
+      "id": 3,
+      "userName": "gia.huy",
+      "fullName": "Gia Huy",
+      "bio": "Cà phê, công nghệ và những ý tưởng mới.",
+      "email": "gia.huy@example.test",
+      "avatarUrl": "/demo-assets/instory-huy.svg",
+      "createdAt": "2026-03-15T08:00:00Z",
+      "updatedAt": null,
+      "roles": [
+        "User"
+      ],
+      "isBlocked": false
+    },
+    {
+      "id": 4,
+      "userName": "thao.pham",
+      "fullName": "Thảo Phạm",
+      "bio": "Một góc nhỏ cho những ngày nhiều màu sắc.",
+      "email": "thao.pham@example.test",
+      "avatarUrl": "/demo-assets/instory-thao.svg",
+      "createdAt": "2026-03-15T08:00:00Z",
+      "updatedAt": null,
+      "roles": [
+        "User"
+      ],
+      "isBlocked": false
+    },
+    {
+      "id": 5,
+      "userName": "khanh.tran",
+      "fullName": "Khánh Trần",
+      "bio": "Đọc, học và chia sẻ mỗi ngày.",
+      "email": "khanh.tran@example.test",
+      "avatarUrl": "/demo-assets/instory-khanh.svg",
+      "createdAt": "2026-03-15T08:00:00Z",
+      "updatedAt": null,
+      "roles": [
+        "User"
+      ],
+      "isBlocked": false
+    },
+    {
+      "id": 6,
+      "userName": "bao.le",
+      "fullName": "Bảo Lê",
+      "bio": "Chạy bộ và khám phá thành phố.",
+      "email": "bao.le@example.test",
+      "avatarUrl": "/demo-assets/instory-bao.svg",
+      "createdAt": "2026-03-15T08:00:00Z",
+      "updatedAt": null,
+      "roles": [
+        "User"
+      ],
+      "isBlocked": true
+    }
+  ],
+  "posts": [
+    {
+      "id": 101,
+      "userId": 1,
+      "content": "Phác họa Sài Gòn bằng những khối màu ấm. Bộ minh họa mới của mình. ☀️ #saigon #nhiepanh",
+      "user": {
+        "id": 1,
+        "userName": "linh.nguyen",
+        "fullName": "Linh Nguyễn",
+        "bio": "Lưu giữ những điều bình dị. Sài Gòn, những chuyến đi và một chút sáng tạo.",
+        "email": "linh.nguyen@example.test",
+        "avatarUrl": "/demo-assets/instory-linh.svg",
+        "createdAt": "2026-03-15T08:00:00Z",
+        "updatedAt": null,
+        "roles": [
+          "User",
+          "Admin"
+        ],
+        "isBlocked": false
+      },
+      "createdAt": "2026-10-31T08:00:00Z",
+      "updatedAt": null,
+      "likesCount": 128,
+      "commentsCount": 12,
+      "sharesCount": 2,
+      "isLiked": false,
+      "hashtags": [
+        "saigon",
+        "nhiepanh"
+      ],
+      "images": [
+        {
+          "id": 201,
+          "imageUrl": "/demo-assets/instory-city.svg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "userId": 2,
+      "content": "Minh họa Đà Lạt cuối tuần: núi xanh và một bảng màu dịu. 🌿 #dulich #dalat",
+      "user": {
+        "id": 2,
+        "userName": "minh.anh",
+        "fullName": "Minh Anh",
+        "bio": "Đi để thấy, chụp để nhớ.",
+        "email": "minh.anh@example.test",
+        "avatarUrl": "/demo-assets/instory-minh.svg",
+        "createdAt": "2026-03-15T08:00:00Z",
+        "updatedAt": null,
+        "roles": [
+          "User"
+        ],
+        "isBlocked": false
+      },
+      "createdAt": "2026-10-31T07:00:00Z",
+      "updatedAt": null,
+      "likesCount": 96,
+      "commentsCount": 8,
+      "sharesCount": 3,
+      "isLiked": true,
+      "hashtags": [
+        "dulich",
+        "dalat"
+      ],
+      "images": [
+        {
+          "id": 202,
+          "imageUrl": "/demo-assets/instory-mountains.svg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "userId": 3,
+      "content": "Góc làm việc qua những nét vẽ hình học. #sangtao #cuocsong",
+      "user": {
+        "id": 3,
+        "userName": "gia.huy",
+        "fullName": "Gia Huy",
+        "bio": "Cà phê, công nghệ và những ý tưởng mới.",
+        "email": "gia.huy@example.test",
+        "avatarUrl": "/demo-assets/instory-huy.svg",
+        "createdAt": "2026-03-15T08:00:00Z",
+        "updatedAt": null,
+        "roles": [
+          "User"
+        ],
+        "isBlocked": false
+      },
+      "createdAt": "2026-10-31T06:00:00Z",
+      "updatedAt": null,
+      "likesCount": 74,
+      "commentsCount": 6,
+      "sharesCount": 4,
+      "isLiked": false,
+      "hashtags": [
+        "sangtao",
+        "cuocsong"
+      ],
+      "images": [
+        {
+          "id": 203,
+          "imageUrl": "/demo-assets/instory-workspace.svg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "id": 104,
+      "userId": 1,
+      "content": "Mang một chút màu xanh vào bộ tranh hôm nay. #cuocsong #sangtao",
+      "user": {
+        "id": 1,
+        "userName": "linh.nguyen",
+        "fullName": "Linh Nguyễn",
+        "bio": "Lưu giữ những điều bình dị. Sài Gòn, những chuyến đi và một chút sáng tạo.",
+        "email": "linh.nguyen@example.test",
+        "avatarUrl": "/demo-assets/instory-linh.svg",
+        "createdAt": "2026-03-15T08:00:00Z",
+        "updatedAt": null,
+        "roles": [
+          "User",
+          "Admin"
+        ],
+        "isBlocked": false
+      },
+      "createdAt": "2026-10-31T05:00:00Z",
+      "updatedAt": null,
+      "likesCount": 53,
+      "commentsCount": 4,
+      "sharesCount": 5,
+      "isLiked": false,
+      "hashtags": [
+        "cuocsong",
+        "sangtao"
+      ],
+      "images": [
+        {
+          "id": 204,
+          "imageUrl": "/demo-assets/instory-plants.svg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "id": 105,
+      "userId": 1,
+      "content": "Minh họa một ngày bên biển bằng màu xanh ngọc và cát vàng. 🌊 #dulich #nhiepanh",
+      "user": {
+        "id": 1,
+        "userName": "linh.nguyen",
+        "fullName": "Linh Nguyễn",
+        "bio": "Lưu giữ những điều bình dị. Sài Gòn, những chuyến đi và một chút sáng tạo.",
+        "email": "linh.nguyen@example.test",
+        "avatarUrl": "/demo-assets/instory-linh.svg",
+        "createdAt": "2026-03-15T08:00:00Z",
+        "updatedAt": null,
+        "roles": [
+          "User",
+          "Admin"
+        ],
+        "isBlocked": false
+      },
+      "createdAt": "2026-10-31T04:00:00Z",
+      "updatedAt": null,
+      "likesCount": 162,
+      "commentsCount": 15,
+      "sharesCount": 6,
+      "isLiked": false,
+      "hashtags": [
+        "dulich",
+        "nhiepanh"
+      ],
+      "images": [
+        {
+          "id": 205,
+          "imageUrl": "/demo-assets/instory-coast.svg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "id": 106,
+      "userId": 1,
+      "content": "Bản vẽ nhỏ về cà phê, sách và buổi sáng yên tĩnh. #cuocsong",
+      "user": {
+        "id": 1,
+        "userName": "linh.nguyen",
+        "fullName": "Linh Nguyễn",
+        "bio": "Lưu giữ những điều bình dị. Sài Gòn, những chuyến đi và một chút sáng tạo.",
+        "email": "linh.nguyen@example.test",
+        "avatarUrl": "/demo-assets/instory-linh.svg",
+        "createdAt": "2026-03-15T08:00:00Z",
+        "updatedAt": null,
+        "roles": [
+          "User",
+          "Admin"
+        ],
+        "isBlocked": false
+      },
+      "createdAt": "2026-10-31T03:00:00Z",
+      "updatedAt": null,
+      "likesCount": 48,
+      "commentsCount": 3,
+      "sharesCount": 7,
+      "isLiked": false,
+      "hashtags": [
+        "cuocsong"
+      ],
+      "images": [
+        {
+          "id": 206,
+          "imageUrl": "/demo-assets/instory-coffee.svg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "id": 107,
+      "userId": 1,
+      "content": "Sài Gòn lúc hoàng hôn — phiên bản màu pastel. #saigon #nhiepanh",
+      "user": {
+        "id": 1,
+        "userName": "linh.nguyen",
+        "fullName": "Linh Nguyễn",
+        "bio": "Lưu giữ những điều bình dị. Sài Gòn, những chuyến đi và một chút sáng tạo.",
+        "email": "linh.nguyen@example.test",
+        "avatarUrl": "/demo-assets/instory-linh.svg",
+        "createdAt": "2026-03-15T08:00:00Z",
+        "updatedAt": null,
+        "roles": [
+          "User",
+          "Admin"
+        ],
+        "isBlocked": false
+      },
+      "createdAt": "2026-10-31T02:00:00Z",
+      "updatedAt": null,
+      "likesCount": 84,
+      "commentsCount": 7,
+      "sharesCount": 8,
+      "isLiked": false,
+      "hashtags": [
+        "saigon",
+        "nhiepanh"
+      ],
+      "images": [
+        {
+          "id": 207,
+          "imageUrl": "/demo-assets/instory-city.svg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "id": 108,
+      "userId": 1,
+      "content": "Một thử nghiệm phối màu từ chuyến đi Đà Lạt. #dulich #dalat",
+      "user": {
+        "id": 1,
+        "userName": "linh.nguyen",
+        "fullName": "Linh Nguyễn",
+        "bio": "Lưu giữ những điều bình dị. Sài Gòn, những chuyến đi và một chút sáng tạo.",
+        "email": "linh.nguyen@example.test",
+        "avatarUrl": "/demo-assets/instory-linh.svg",
+        "createdAt": "2026-03-15T08:00:00Z",
+        "updatedAt": null,
+        "roles": [
+          "User",
+          "Admin"
+        ],
+        "isBlocked": false
+      },
+      "createdAt": "2026-10-31T01:00:00Z",
+      "updatedAt": null,
+      "likesCount": 112,
+      "commentsCount": 9,
+      "sharesCount": 9,
+      "isLiked": false,
+      "hashtags": [
+        "dulich",
+        "dalat"
+      ],
+      "images": [
+        {
+          "id": 208,
+          "imageUrl": "/demo-assets/instory-mountains.svg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "id": 109,
+      "userId": 4,
+      "content": "Mình vừa vẽ lại góc đọc sách yêu thích. #cuocsong",
+      "user": {
+        "id": 4,
+        "userName": "thao.pham",
+        "fullName": "Thảo Phạm",
+        "bio": "Một góc nhỏ cho những ngày nhiều màu sắc.",
+        "email": "thao.pham@example.test",
+        "avatarUrl": "/demo-assets/instory-thao.svg",
+        "createdAt": "2026-03-15T08:00:00Z",
+        "updatedAt": null,
+        "roles": [
+          "User"
+        ],
+        "isBlocked": false
+      },
+      "createdAt": "2026-10-31T00:00:00Z",
+      "updatedAt": null,
+      "likesCount": 35,
+      "commentsCount": 2,
+      "sharesCount": 10,
+      "isLiked": false,
+      "hashtags": [
+        "cuocsong"
+      ],
+      "images": [
+        {
+          "id": 209,
+          "imageUrl": "/demo-assets/instory-coffee.svg",
+          "sortOrder": 0
+        }
+      ]
+    }
+  ],
+  "hashtags": [
+    {
+      "id": 1,
+      "tag": "dulich",
+      "totalPost": 248
+    },
+    {
+      "id": 2,
+      "tag": "nhiepanh",
+      "totalPost": 186
+    },
+    {
+      "id": 3,
+      "tag": "saigon",
+      "totalPost": 154
+    },
+    {
+      "id": 4,
+      "tag": "cuocsong",
+      "totalPost": 132
+    },
+    {
+      "id": 5,
+      "tag": "sangtao",
+      "totalPost": 98
+    }
+  ],
+  "stories": [
+    {
+      "user": {
+        "id": 1,
+        "userName": "linh.nguyen",
+        "fullName": "Linh Nguyễn",
+        "bio": "Lưu giữ những điều bình dị. Sài Gòn, những chuyến đi và một chút sáng tạo.",
+        "email": "linh.nguyen@example.test",
+        "avatarUrl": "/demo-assets/instory-linh.svg",
+        "createdAt": "2026-03-15T08:00:00Z",
+        "updatedAt": null,
+        "roles": [
+          "User",
+          "Admin"
+        ],
+        "isBlocked": false
+      },
+      "hasUnviewed": false,
+      "stories": [
+        {
+          "id": 301,
+          "userId": 1,
+          "user": {
+            "id": 1,
+            "userName": "linh.nguyen",
+            "fullName": "Linh Nguyễn",
+            "bio": "Lưu giữ những điều bình dị. Sài Gòn, những chuyến đi và một chút sáng tạo.",
+            "email": "linh.nguyen@example.test",
+            "avatarUrl": "/demo-assets/instory-linh.svg",
+            "createdAt": "2026-03-15T08:00:00Z",
+            "updatedAt": null,
+            "roles": [
+              "User",
+              "Admin"
+            ],
+            "isBlocked": false
+          },
+          "mediaUrl": "/demo-assets/instory-city.svg",
+          "caption": "Chào ngày mới ☀️",
+          "mediaType": "Image",
+          "expiresAt": "2026-11-01T08:00:00Z",
+          "createdAt": "2026-10-30T23:00:00Z",
+          "viewsCount": 24,
+          "isViewed": true
+        }
+      ]
+    },
+    {
+      "user": {
+        "id": 2,
+        "userName": "minh.anh",
+        "fullName": "Minh Anh",
+        "bio": "Đi để thấy, chụp để nhớ.",
+        "email": "minh.anh@example.test",
+        "avatarUrl": "/demo-assets/instory-minh.svg",
+        "createdAt": "2026-03-15T08:00:00Z",
+        "updatedAt": null,
+        "roles": [
+          "User"
+        ],
+        "isBlocked": false
+      },
+      "hasUnviewed": true,
+      "stories": [
+        {
+          "id": 302,
+          "userId": 2,
+          "user": {
+            "id": 2,
+            "userName": "minh.anh",
+            "fullName": "Minh Anh",
+            "bio": "Đi để thấy, chụp để nhớ.",
+            "email": "minh.anh@example.test",
+            "avatarUrl": "/demo-assets/instory-minh.svg",
+            "createdAt": "2026-03-15T08:00:00Z",
+            "updatedAt": null,
+            "roles": [
+              "User"
+            ],
+            "isBlocked": false
+          },
+          "mediaUrl": "/demo-assets/instory-mountains.svg",
+          "caption": "Một chút xanh 🌿",
+          "mediaType": "Image",
+          "expiresAt": "2026-11-01T08:00:00Z",
+          "createdAt": "2026-10-30T22:00:00Z",
+          "viewsCount": 27,
+          "isViewed": false
+        }
+      ]
+    },
+    {
+      "user": {
+        "id": 3,
+        "userName": "gia.huy",
+        "fullName": "Gia Huy",
+        "bio": "Cà phê, công nghệ và những ý tưởng mới.",
+        "email": "gia.huy@example.test",
+        "avatarUrl": "/demo-assets/instory-huy.svg",
+        "createdAt": "2026-03-15T08:00:00Z",
+        "updatedAt": null,
+        "roles": [
+          "User"
+        ],
+        "isBlocked": false
+      },
+      "hasUnviewed": true,
+      "stories": [
+        {
+          "id": 303,
+          "userId": 3,
+          "user": {
+            "id": 3,
+            "userName": "gia.huy",
+            "fullName": "Gia Huy",
+            "bio": "Cà phê, công nghệ và những ý tưởng mới.",
+            "email": "gia.huy@example.test",
+            "avatarUrl": "/demo-assets/instory-huy.svg",
+            "createdAt": "2026-03-15T08:00:00Z",
+            "updatedAt": null,
+            "roles": [
+              "User"
+            ],
+            "isBlocked": false
+          },
+          "mediaUrl": "/demo-assets/instory-workspace.svg",
+          "caption": "Hôm nay có gì mới?",
+          "mediaType": "Image",
+          "expiresAt": "2026-11-01T08:00:00Z",
+          "createdAt": "2026-10-30T21:00:00Z",
+          "viewsCount": 30,
+          "isViewed": false
+        }
+      ]
+    },
+    {
+      "user": {
+        "id": 4,
+        "userName": "thao.pham",
+        "fullName": "Thảo Phạm",
+        "bio": "Một góc nhỏ cho những ngày nhiều màu sắc.",
+        "email": "thao.pham@example.test",
+        "avatarUrl": "/demo-assets/instory-thao.svg",
+        "createdAt": "2026-03-15T08:00:00Z",
+        "updatedAt": null,
+        "roles": [
+          "User"
+        ],
+        "isBlocked": false
+      },
+      "hasUnviewed": true,
+      "stories": [
+        {
+          "id": 304,
+          "userId": 4,
+          "user": {
+            "id": 4,
+            "userName": "thao.pham",
+            "fullName": "Thảo Phạm",
+            "bio": "Một góc nhỏ cho những ngày nhiều màu sắc.",
+            "email": "thao.pham@example.test",
+            "avatarUrl": "/demo-assets/instory-thao.svg",
+            "createdAt": "2026-03-15T08:00:00Z",
+            "updatedAt": null,
+            "roles": [
+              "User"
+            ],
+            "isBlocked": false
+          },
+          "mediaUrl": "/demo-assets/instory-plants.svg",
+          "caption": "Góc bình yên",
+          "mediaType": "Image",
+          "expiresAt": "2026-11-01T08:00:00Z",
+          "createdAt": "2026-10-30T20:00:00Z",
+          "viewsCount": 33,
+          "isViewed": false
+        }
+      ]
+    },
+    {
+      "user": {
+        "id": 5,
+        "userName": "khanh.tran",
+        "fullName": "Khánh Trần",
+        "bio": "Đọc, học và chia sẻ mỗi ngày.",
+        "email": "khanh.tran@example.test",
+        "avatarUrl": "/demo-assets/instory-khanh.svg",
+        "createdAt": "2026-03-15T08:00:00Z",
+        "updatedAt": null,
+        "roles": [
+          "User"
+        ],
+        "isBlocked": false
+      },
+      "hasUnviewed": true,
+      "stories": [
+        {
+          "id": 305,
+          "userId": 5,
+          "user": {
+            "id": 5,
+            "userName": "khanh.tran",
+            "fullName": "Khánh Trần",
+            "bio": "Đọc, học và chia sẻ mỗi ngày.",
+            "email": "khanh.tran@example.test",
+            "avatarUrl": "/demo-assets/instory-khanh.svg",
+            "createdAt": "2026-03-15T08:00:00Z",
+            "updatedAt": null,
+            "roles": [
+              "User"
+            ],
+            "isBlocked": false
+          },
+          "mediaUrl": "/demo-assets/instory-coast.svg",
+          "caption": "Cuối tuần đi đâu?",
+          "mediaType": "Image",
+          "expiresAt": "2026-11-01T08:00:00Z",
+          "createdAt": "2026-10-30T19:00:00Z",
+          "viewsCount": 36,
+          "isViewed": false
+        }
+      ]
+    }
+  ],
+  "highlights": [
+    {
+      "id": 401,
+      "userId": 1,
+      "title": "Sài Gòn",
+      "coverUrl": "/demo-assets/instory-city.svg",
+      "stories": [
+        {
+          "id": 301,
+          "userId": 1,
+          "user": {
+            "id": 1,
+            "userName": "linh.nguyen",
+            "fullName": "Linh Nguyễn",
+            "bio": "Lưu giữ những điều bình dị. Sài Gòn, những chuyến đi và một chút sáng tạo.",
+            "email": "linh.nguyen@example.test",
+            "avatarUrl": "/demo-assets/instory-linh.svg",
+            "createdAt": "2026-03-15T08:00:00Z",
+            "updatedAt": null,
+            "roles": [
+              "User",
+              "Admin"
+            ],
+            "isBlocked": false
+          },
+          "mediaUrl": "/demo-assets/instory-city.svg",
+          "caption": "Chào ngày mới ☀️",
+          "mediaType": "Image",
+          "expiresAt": "2026-11-01T08:00:00Z",
+          "createdAt": "2026-10-30T18:00:00Z",
+          "viewsCount": 24,
+          "isViewed": true
+        }
+      ],
+      "createdAt": "2026-10-30T17:00:00Z"
+    },
+    {
+      "id": 402,
+      "userId": 1,
+      "title": "Chuyến đi",
+      "coverUrl": "/demo-assets/instory-coast.svg",
+      "stories": [
+        {
+          "id": 301,
+          "userId": 1,
+          "user": {
+            "id": 1,
+            "userName": "linh.nguyen",
+            "fullName": "Linh Nguyễn",
+            "bio": "Lưu giữ những điều bình dị. Sài Gòn, những chuyến đi và một chút sáng tạo.",
+            "email": "linh.nguyen@example.test",
+            "avatarUrl": "/demo-assets/instory-linh.svg",
+            "createdAt": "2026-03-15T08:00:00Z",
+            "updatedAt": null,
+            "roles": [
+              "User",
+              "Admin"
+            ],
+            "isBlocked": false
+          },
+          "mediaUrl": "/demo-assets/instory-city.svg",
+          "caption": "Chào ngày mới ☀️",
+          "mediaType": "Image",
+          "expiresAt": "2026-11-01T08:00:00Z",
+          "createdAt": "2026-10-31T08:00:00Z",
+          "viewsCount": 24,
+          "isViewed": true
+        }
+      ],
+      "createdAt": "2026-10-31T07:00:00Z"
+    },
+    {
+      "id": 403,
+      "userId": 1,
+      "title": "Mỗi ngày",
+      "coverUrl": "/demo-assets/instory-coffee.svg",
+      "stories": [
+        {
+          "id": 301,
+          "userId": 1,
+          "user": {
+            "id": 1,
+            "userName": "linh.nguyen",
+            "fullName": "Linh Nguyễn",
+            "bio": "Lưu giữ những điều bình dị. Sài Gòn, những chuyến đi và một chút sáng tạo.",
+            "email": "linh.nguyen@example.test",
+            "avatarUrl": "/demo-assets/instory-linh.svg",
+            "createdAt": "2026-03-15T08:00:00Z",
+            "updatedAt": null,
+            "roles": [
+              "User",
+              "Admin"
+            ],
+            "isBlocked": false
+          },
+          "mediaUrl": "/demo-assets/instory-city.svg",
+          "caption": "Chào ngày mới ☀️",
+          "mediaType": "Image",
+          "expiresAt": "2026-11-01T08:00:00Z",
+          "createdAt": "2026-10-31T06:00:00Z",
+          "viewsCount": 24,
+          "isViewed": true
+        }
+      ],
+      "createdAt": "2026-10-31T05:00:00Z"
+    }
+  ],
+  "messages": [
+    {
+      "id": 501,
+      "chatId": 1,
+      "senderId": 2,
+      "senderName": "Minh Anh",
+      "senderAvatar": "/demo-assets/instory-minh.svg",
+      "content": "Cuối tuần này nhóm mình cùng làm một bộ minh họa về thành phố nhé?",
+      "mediaUrl": null,
+      "createdAt": "2026-10-31T07:10:00Z"
+    },
+    {
+      "id": 502,
+      "chatId": 1,
+      "senderId": 1,
+      "senderName": "Linh Nguyễn",
+      "senderAvatar": "/demo-assets/instory-linh.svg",
+      "content": "Được đó! Mình vừa thử bảng màu ấm cho cảnh hoàng hôn.",
+      "mediaUrl": null,
+      "createdAt": "2026-10-31T07:15:00Z"
+    },
+    {
+      "id": 503,
+      "chatId": 1,
+      "senderId": 2,
+      "senderName": "Minh Anh",
+      "senderAvatar": "/demo-assets/instory-minh.svg",
+      "content": "Mình gửi bạn mẫu minh họa bờ biển nè 🎨",
+      "mediaUrl": "/demo-assets/instory-coast.svg",
+      "createdAt": "2026-10-31T07:20:00Z"
+    },
+    {
+      "id": 504,
+      "chatId": 1,
+      "senderId": 1,
+      "senderName": "Linh Nguyễn",
+      "senderAvatar": "/demo-assets/instory-linh.svg",
+      "content": "Màu đẹp quá! Hẹn 16:30 chiều thứ bảy nha. ✨",
+      "mediaUrl": null,
+      "createdAt": "2026-10-31T07:25:00Z"
+    },
+    {
+      "id": 505,
+      "chatId": 1,
+      "senderId": 2,
+      "senderName": "Minh Anh",
+      "senderAvatar": "/demo-assets/instory-minh.svg",
+      "content": "Nhất trí, mình rủ thêm Thảo và Gia Huy nữa nhé!",
+      "mediaUrl": null,
+      "createdAt": "2026-10-31T07:30:00Z"
+    }
+  ],
+  "chats": [
+    {
+      "id": 1,
+      "type": "Direct",
+      "name": null,
+      "participants": [
+        {
+          "userId": 1,
+          "fullName": "Linh Nguyễn",
+          "username": "linh.nguyen",
+          "avatarUrl": "/demo-assets/instory-linh.svg"
+        },
+        {
+          "userId": 2,
+          "fullName": "Minh Anh",
+          "username": "minh.anh",
+          "avatarUrl": "/demo-assets/instory-minh.svg"
+        }
+      ],
+      "lastMessage": {
+        "id": 505,
+        "chatId": 1,
+        "senderId": 2,
+        "senderName": "Minh Anh",
+        "senderAvatar": "/demo-assets/instory-minh.svg",
+        "content": "Nhất trí, mình rủ thêm Thảo và Gia Huy nữa nhé!",
+        "mediaUrl": null,
+        "createdAt": "2026-10-31T07:30:00Z"
+      }
+    },
+    {
+      "id": 2,
+      "type": "Group",
+      "name": "Cuối tuần khám phá",
+      "participants": [
+        {
+          "userId": 1,
+          "fullName": "Linh Nguyễn",
+          "username": "linh.nguyen",
+          "avatarUrl": "/demo-assets/instory-linh.svg"
+        },
+        {
+          "userId": 2,
+          "fullName": "Minh Anh",
+          "username": "minh.anh",
+          "avatarUrl": "/demo-assets/instory-minh.svg"
+        },
+        {
+          "userId": 3,
+          "fullName": "Gia Huy",
+          "username": "gia.huy",
+          "avatarUrl": "/demo-assets/instory-huy.svg"
+        },
+        {
+          "userId": 4,
+          "fullName": "Thảo Phạm",
+          "username": "thao.pham",
+          "avatarUrl": "/demo-assets/instory-thao.svg"
+        }
+      ],
+      "lastMessage": {
+        "id": 501,
+        "chatId": 1,
+        "senderId": 2,
+        "senderName": "Minh Anh",
+        "senderAvatar": "/demo-assets/instory-minh.svg",
+        "content": "Thứ bảy gặp nhau nha cả nhà! 🌿",
+        "mediaUrl": null,
+        "createdAt": "2026-10-31T06:55:00Z"
+      }
+    },
+    {
+      "id": 3,
+      "type": "Direct",
+      "name": null,
+      "participants": [
+        {
+          "userId": 1,
+          "fullName": "Linh Nguyễn",
+          "username": "linh.nguyen",
+          "avatarUrl": "/demo-assets/instory-linh.svg"
+        },
+        {
+          "userId": 3,
+          "fullName": "Gia Huy",
+          "username": "gia.huy",
+          "avatarUrl": "/demo-assets/instory-huy.svg"
+        }
+      ],
+      "lastMessage": {
+        "id": 501,
+        "chatId": 1,
+        "senderId": 2,
+        "senderName": "Minh Anh",
+        "senderAvatar": "/demo-assets/instory-minh.svg",
+        "content": "Gửi bạn tài liệu workshop hôm qua nhé.",
+        "mediaUrl": null,
+        "createdAt": "2026-10-31T06:40:00Z"
+      }
+    },
+    {
+      "id": 4,
+      "type": "Direct",
+      "name": null,
+      "participants": [
+        {
+          "userId": 1,
+          "fullName": "Linh Nguyễn",
+          "username": "linh.nguyen",
+          "avatarUrl": "/demo-assets/instory-linh.svg"
+        },
+        {
+          "userId": 4,
+          "fullName": "Thảo Phạm",
+          "username": "thao.pham",
+          "avatarUrl": "/demo-assets/instory-thao.svg"
+        }
+      ],
+      "lastMessage": {
+        "id": 501,
+        "chatId": 1,
+        "senderId": 2,
+        "senderName": "Minh Anh",
+        "senderAvatar": "/demo-assets/instory-minh.svg",
+        "content": "Album mới của bạn đẹp quá ✨",
+        "mediaUrl": null,
+        "createdAt": "2026-10-31T06:25:00Z"
+      }
+    }
+  ]
+}

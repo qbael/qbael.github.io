@@ -1,0 +1,198 @@
+{
+  "demo": true,
+  "notice": "Fictional demo data for screenshots of the actual Medify application components. No real patients or appointments.",
+  "clinic": {
+    "id": "demo-clinic-central",
+    "userId": "demo-clinic-user",
+    "clinicName": "Phòng khám Medify Central",
+    "address": "Quận 1, TP. Hồ Chí Minh",
+    "description": "Phòng khám đa khoa với lịch khám theo chuyên khoa và bác sĩ.",
+    "weekdayOpenHour": "07:30",
+    "weekdayCloseHour": "20:00",
+    "weekendOpenHour": "08:00",
+    "weekendCloseHour": "17:00",
+    "logoUrl": "/logo.svg",
+    "avatarUrl": "/landing.jpg",
+    "clinicSpecialties": []
+  },
+  "doctors": [
+    {
+      "id": "doctor-1",
+      "userId": "demo-doctor-user-1",
+      "fullName": "BS. Nguyễn An",
+      "bio": "Bác sĩ chuyên khoa Tim mạch. Hồ sơ minh họa cho trải nghiệm tìm và đặt lịch khám.",
+      "gender": true,
+      "address": "Phòng khám Medify Central, Quận 1",
+      "avatarUrl": "/doctor.jpg",
+      "doctorSpecialties": [
+        {
+          "id": "demo-doctor-specialty-1",
+          "specialty": {
+            "id": "demo-specialty-1",
+            "name": "Tim mạch"
+          }
+        }
+      ]
+    },
+    {
+      "id": "doctor-2",
+      "userId": "demo-doctor-user-2",
+      "fullName": "BS. Nguyễn Minh",
+      "bio": "Bác sĩ Nội tổng quát. Hồ sơ minh họa cho trải nghiệm tìm và đặt lịch khám.",
+      "gender": true,
+      "address": "Phòng khám Medify Central, Quận 1",
+      "avatarUrl": "/doctor.jpg",
+      "doctorSpecialties": [
+        {
+          "id": "demo-doctor-specialty-2",
+          "specialty": {
+            "id": "demo-specialty-2",
+            "name": "Nội tổng quát"
+          }
+        }
+      ]
+    },
+    {
+      "id": "doctor-3",
+      "userId": "demo-doctor-user-3",
+      "fullName": "BS. Nguyễn Linh",
+      "bio": "Bác sĩ Nhi khoa. Hồ sơ minh họa cho trải nghiệm tìm và đặt lịch khám.",
+      "gender": false,
+      "address": "Phòng khám Medify Family, Quận 7",
+      "avatarUrl": "/doctor.jpg",
+      "doctorSpecialties": [
+        {
+          "id": "demo-doctor-specialty-3",
+          "specialty": {
+            "id": "demo-specialty-3",
+            "name": "Nhi khoa"
+          }
+        }
+      ]
+    },
+    {
+      "id": "doctor-4",
+      "userId": "demo-doctor-user-4",
+      "fullName": "BS. Nguyễn Quang",
+      "bio": "Bác sĩ Tai Mũi Họng. Hồ sơ minh họa cho trải nghiệm tìm và đặt lịch khám.",
+      "gender": true,
+      "address": "Phòng khám Medify Riverside, Thủ Đức",
+      "avatarUrl": "/doctor.jpg",
+      "doctorSpecialties": [
+        {
+          "id": "demo-doctor-specialty-4",
+          "specialty": {
+            "id": "demo-specialty-4",
+            "name": "Tai Mũi Họng"
+          }
+        }
+      ]
+    }
+  ],
+  "availability": {
+    "2026-11-02": 4,
+    "2026-11-03": 4,
+    "2026-11-04": 4,
+    "2026-11-06": 4
+  },
+  "templates": [
+    {
+      "dayOfWeek": "MONDAY",
+      "fromTime": "08:00",
+      "toTime": "11:30",
+      "slotDuration": 30
+    },
+    {
+      "dayOfWeek": "TUESDAY",
+      "fromTime": "13:30",
+      "toTime": "17:00",
+      "slotDuration": 30
+    },
+    {
+      "dayOfWeek": "WEDNESDAY",
+      "fromTime": "08:00",
+      "toTime": "11:30",
+      "slotDuration": 30
+    },
+    {
+      "dayOfWeek": "FRIDAY",
+      "fromTime": "08:00",
+      "toTime": "11:30",
+      "slotDuration": 30
+    }
+  ],
+  "appointments": [
+    {
+      "id": "demo-apt-01",
+      "appointmentDate": "2026-11-02",
+      "startTime": "08:00:00",
+      "endTime": "08:30:00",
+      "patientName": "Khách mẫu 01",
+      "patientPhone": "09•• ••• 101",
+      "doctorName": "BS. Nguyễn Minh",
+      "specialtyName": "Nội tổng quát",
+      "status": "COMPLETED",
+      "notes": "Lịch khám minh họa."
+    },
+    {
+      "id": "demo-apt-02",
+      "appointmentDate": "2026-11-02",
+      "startTime": "08:30:00",
+      "endTime": "09:00:00",
+      "patientName": "Khách mẫu 02",
+      "patientPhone": "09•• ••• 102",
+      "doctorName": "BS. Nguyễn An",
+      "specialtyName": "Tim mạch",
+      "status": "SCHEDULED",
+      "notes": "Lịch khám minh họa."
+    },
+    {
+      "id": "demo-apt-03",
+      "appointmentDate": "2026-11-02",
+      "startTime": "09:00:00",
+      "endTime": "09:30:00",
+      "patientName": "Khách mẫu 03",
+      "patientPhone": "09•• ••• 103",
+      "doctorName": "BS. Nguyễn Linh",
+      "specialtyName": "Nhi khoa",
+      "status": "SCHEDULED",
+      "notes": ""
+    },
+    {
+      "id": "demo-apt-04",
+      "appointmentDate": "2026-11-02",
+      "startTime": "09:30:00",
+      "endTime": "10:00:00",
+      "patientName": "Khách mẫu 04",
+      "patientPhone": "09•• ••• 104",
+      "doctorName": "BS. Nguyễn Minh",
+      "specialtyName": "Nội tổng quát",
+      "status": "CANCELLED",
+      "notes": ""
+    },
+    {
+      "id": "demo-apt-05",
+      "appointmentDate": "2026-11-02",
+      "startTime": "10:00:00",
+      "endTime": "10:30:00",
+      "patientName": "Khách mẫu 05",
+      "patientPhone": "09•• ••• 105",
+      "doctorName": "BS. Nguyễn Quang",
+      "specialtyName": "Tai Mũi Họng",
+      "status": "NO_SHOW",
+      "notes": ""
+    },
+    {
+      "id": "demo-apt-06",
+      "appointmentDate": "2026-11-02",
+      "startTime": "14:00:00",
+      "endTime": "14:30:00",
+      "patientName": "Khách mẫu 06",
+      "patientPhone": "09•• ••• 106",
+      "doctorName": "BS. Nguyễn Minh",
+      "specialtyName": "Nội tổng quát",
+      "status": "SCHEDULED",
+      "notes": ""
+    }
+  ]
+}

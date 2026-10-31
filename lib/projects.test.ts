@@ -10,6 +10,19 @@ void test('featured projects lead the list and every case study has local images
     ['Findie', 'Medify', 'Instory'],
   );
   assert.equal(new Set(projects.map(({ id }) => id)).size, projects.length);
+  for (const project of projects.slice(0, 3)) {
+    assert.equal(
+      project.screenshots.length,
+      5,
+      `${project.name} needs five screenshots`,
+    );
+    assert.equal(
+      new Set(project.screenshots.map(({ src }) => src)).size,
+      5,
+      `${project.name} needs five distinct screenshots`,
+    );
+    assert.match(project.imageNote, /fictional/);
+  }
 
   for (const project of projects) {
     for (const text of [

@@ -1,0 +1,274 @@
+{
+  "demo": true,
+  "note": "Fictional portfolio fixtures, not production data. SVG specimens are code-native illustrations. Actual Findie React components render the UI.",
+  "users": {
+    "holder": {
+      "id": "10000000-0000-4000-8000-000000000001",
+      "email": null,
+      "displayName": "An Demo",
+      "createdAt": "2026-10-20T02:00:00Z"
+    },
+    "claimant": {
+      "id": "10000000-0000-4000-8000-000000000002",
+      "email": null,
+      "displayName": "Minh Demo",
+      "createdAt": "2026-10-20T02:00:00Z"
+    },
+    "staff": {
+      "id": "10000000-0000-4000-8000-000000000003",
+      "email": null,
+      "displayName": "Nhân viên Hub Demo",
+      "createdAt": "2026-10-20T02:00:00Z"
+    }
+  },
+  "hub": {
+    "id": "30000000-0000-4000-8000-000000000001",
+    "name": "Findie Hub — Khuôn viên Demo",
+    "publicAddress": "Quầy hỗ trợ tầng trệt, Khuôn viên Demo",
+    "directions": "Đi từ cổng chính đến sảnh trung tâm. Quầy hỗ trợ nằm bên phải."
+  },
+  "items": [
+    {
+      "id": "20000000-0000-4000-8000-000000000001",
+      "title": "Ví da đen, khóa kéo vàng",
+      "publicDescription": "Ví nhỏ màu đen, khóa kéo vàng. Các chi tiết bên trong được giữ riêng để đối chiếu với chủ sở hữu.",
+      "foundArea": "Khu tự học A — Khuôn viên Demo",
+      "foundTimePrecision": "date",
+      "foundOn": "2026-10-29",
+      "foundFrom": null,
+      "foundUntil": null,
+      "foundTimezone": "Asia/Ho_Chi_Minh",
+      "lifecycle": "active",
+      "publicationState": "published",
+      "canClaim": true,
+      "canDelete": false,
+      "rowVersion": 1,
+      "createdAt": "2026-10-29T08:20:00Z",
+      "custody": {
+        "kind": "person",
+        "displayName": "An Demo",
+        "pointId": null,
+        "name": null,
+        "publicAddress": null,
+        "instructions": null
+      },
+      "images": [
+        {
+          "id": "60000000-0000-4000-8000-000000000001",
+          "position": 1,
+          "contentVersion": 1,
+          "url": "/api/items/20000000-0000-4000-8000-000000000001/images/60000000-0000-4000-8000-000000000001/content"
+        }
+      ]
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000002",
+      "title": "Balô laptop màu xám",
+      "publicDescription": "Balô xám có hai ngăn lớn và một túi bên. Nhặt được gần khu sinh hoạt chung.",
+      "foundArea": "Sảnh B — Khuôn viên Demo",
+      "foundTimePrecision": "date",
+      "foundOn": "2026-10-29",
+      "foundFrom": null,
+      "foundUntil": null,
+      "foundTimezone": "Asia/Ho_Chi_Minh",
+      "lifecycle": "active",
+      "publicationState": "published",
+      "canClaim": true,
+      "canDelete": false,
+      "rowVersion": 1,
+      "createdAt": "2026-10-29T08:20:00Z",
+      "custody": {
+        "kind": "person",
+        "displayName": "An Demo",
+        "pointId": null,
+        "name": null,
+        "publicAddress": null,
+        "instructions": null
+      },
+      "images": [
+        {
+          "id": "60000000-0000-4000-8000-000000000002",
+          "position": 1,
+          "contentVersion": 1,
+          "url": "/api/items/20000000-0000-4000-8000-000000000002/images/60000000-0000-4000-8000-000000000002/content"
+        }
+      ]
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000003",
+      "title": "Chùm chìa khóa, móc màu xanh",
+      "publicDescription": "Chùm ba chìa khóa với móc vải xanh. Vui lòng mô tả dấu hiệu riêng trên móc khóa để nhận lại.",
+      "foundArea": "Bãi xe C — Khuôn viên Demo",
+      "foundTimePrecision": "date",
+      "foundOn": "2026-10-28",
+      "foundFrom": null,
+      "foundUntil": null,
+      "foundTimezone": "Asia/Ho_Chi_Minh",
+      "lifecycle": "active",
+      "publicationState": "published",
+      "canClaim": true,
+      "canDelete": false,
+      "rowVersion": 1,
+      "createdAt": "2026-10-28T08:20:00Z",
+      "custody": {
+        "kind": "person",
+        "displayName": "An Demo",
+        "pointId": null,
+        "name": null,
+        "publicAddress": null,
+        "instructions": null
+      },
+      "images": [
+        {
+          "id": "60000000-0000-4000-8000-000000000003",
+          "position": 1,
+          "contentVersion": 1,
+          "url": "/api/items/20000000-0000-4000-8000-000000000003/images/60000000-0000-4000-8000-000000000003/content"
+        }
+      ]
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000004",
+      "title": "Tai nghe không dây màu trắng",
+      "publicDescription": "Hộp tai nghe màu trắng được tìm thấy trên bàn đọc sách. Đối chiếu đặc điểm hộp tại nơi giữ.",
+      "foundArea": "Phòng đọc — Khuôn viên Demo",
+      "foundTimePrecision": "date",
+      "foundOn": "2026-10-28",
+      "foundFrom": null,
+      "foundUntil": null,
+      "foundTimezone": "Asia/Ho_Chi_Minh",
+      "lifecycle": "active",
+      "publicationState": "published",
+      "canClaim": false,
+      "canDelete": false,
+      "rowVersion": 1,
+      "createdAt": "2026-10-28T08:20:00Z",
+      "custody": {
+        "kind": "external",
+        "displayName": null,
+        "pointId": null,
+        "name": "Quầy bảo vệ — Thư viện Demo",
+        "publicAddress": "Cổng chính Thư viện Demo",
+        "instructions": "Đến quầy và cung cấp đặc điểm riêng để đối chiếu trực tiếp."
+      },
+      "images": [
+        {
+          "id": "60000000-0000-4000-8000-000000000004",
+          "position": 1,
+          "contentVersion": 1,
+          "url": "/api/items/20000000-0000-4000-8000-000000000004/images/60000000-0000-4000-8000-000000000004/content"
+        }
+      ]
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000005",
+      "title": "Bình giữ nhiệt màu xanh",
+      "publicDescription": "Bình giữ nhiệt xanh đậm, nắp vặn. Đã được bàn giao trực tiếp cho Findie Hub để bảo quản.",
+      "foundArea": "Khu thể thao — Khuôn viên Demo",
+      "foundTimePrecision": "date",
+      "foundOn": "2026-10-27",
+      "foundFrom": null,
+      "foundUntil": null,
+      "foundTimezone": "Asia/Ho_Chi_Minh",
+      "lifecycle": "active",
+      "publicationState": "published",
+      "canClaim": false,
+      "canDelete": false,
+      "rowVersion": 1,
+      "createdAt": "2026-10-27T08:20:00Z",
+      "custody": {
+        "kind": "point",
+        "displayName": null,
+        "pointId": "30000000-0000-4000-8000-000000000001",
+        "name": "Findie Hub — Khuôn viên Demo",
+        "publicAddress": "Quầy hỗ trợ tầng trệt, Khuôn viên Demo",
+        "instructions": "Đến quầy và cung cấp đặc điểm riêng để đối chiếu trực tiếp."
+      },
+      "images": [
+        {
+          "id": "60000000-0000-4000-8000-000000000005",
+          "position": 1,
+          "contentVersion": 1,
+          "url": "/api/items/20000000-0000-4000-8000-000000000005/images/60000000-0000-4000-8000-000000000005/content"
+        }
+      ]
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000006",
+      "title": "Kính gọng đen trong hộp",
+      "publicDescription": "Kính gọng đen trong hộp cứng màu nâu. Đang chờ chủ sở hữu đến Findie Hub đối chiếu.",
+      "foundArea": "Giảng đường D — Khuôn viên Demo",
+      "foundTimePrecision": "date",
+      "foundOn": "2026-10-27",
+      "foundFrom": null,
+      "foundUntil": null,
+      "foundTimezone": "Asia/Ho_Chi_Minh",
+      "lifecycle": "active",
+      "publicationState": "published",
+      "canClaim": false,
+      "canDelete": false,
+      "rowVersion": 1,
+      "createdAt": "2026-10-27T08:20:00Z",
+      "custody": {
+        "kind": "point",
+        "displayName": null,
+        "pointId": "30000000-0000-4000-8000-000000000001",
+        "name": "Findie Hub — Khuôn viên Demo",
+        "publicAddress": "Quầy hỗ trợ tầng trệt, Khuôn viên Demo",
+        "instructions": "Đến quầy và cung cấp đặc điểm riêng để đối chiếu trực tiếp."
+      },
+      "images": [
+        {
+          "id": "60000000-0000-4000-8000-000000000006",
+          "position": 1,
+          "contentVersion": 1,
+          "url": "/api/items/20000000-0000-4000-8000-000000000006/images/60000000-0000-4000-8000-000000000006/content"
+        }
+      ]
+    }
+  ],
+  "claim": {
+    "id": "40000000-0000-4000-8000-000000000001",
+    "itemId": "20000000-0000-4000-8000-000000000001",
+    "claimantUserId": "10000000-0000-4000-8000-000000000002",
+    "reviewerUserId": "10000000-0000-4000-8000-000000000001",
+    "status": "pending",
+    "stale": false,
+    "createdAt": "2026-10-30T02:15:00Z",
+    "decidedAt": null,
+    "decisionNote": null,
+    "conversationId": null,
+    "answers": [
+      {
+        "slot": 1,
+        "questionText": "Bên trong ví có phụ kiện gì đặc biệt?",
+        "answerText": "Có một móc khóa nhỏ hình ngôi sao bằng gỗ."
+      },
+      {
+        "slot": 2,
+        "questionText": "Mặt trong ngăn cuối có dấu hiệu gì?",
+        "answerText": "Có một miếng dán hình chiếc lá màu xanh."
+      }
+    ]
+  },
+  "intake": {
+    "id": "50000000-0000-4000-8000-000000000001",
+    "itemId": "20000000-0000-4000-8000-000000000002",
+    "requestedBy": "10000000-0000-4000-8000-000000000001",
+    "targetPointId": "30000000-0000-4000-8000-000000000001",
+    "itemRowVersion": 1,
+    "status": "pending",
+    "stale": false,
+    "createdAt": "2026-10-30T03:40:00Z",
+    "decidedAt": null,
+    "decisionNote": null
+  },
+  "photos": {
+    "/api/items/20000000-0000-4000-8000-000000000001/images/60000000-0000-4000-8000-000000000001/content": "findie-wallet.svg",
+    "/api/items/20000000-0000-4000-8000-000000000002/images/60000000-0000-4000-8000-000000000002/content": "findie-backpack.svg",
+    "/api/items/20000000-0000-4000-8000-000000000003/images/60000000-0000-4000-8000-000000000003/content": "findie-keys.svg",
+    "/api/items/20000000-0000-4000-8000-000000000004/images/60000000-0000-4000-8000-000000000004/content": "findie-earbuds.svg",
+    "/api/items/20000000-0000-4000-8000-000000000005/images/60000000-0000-4000-8000-000000000005/content": "findie-bottle.svg",
+    "/api/items/20000000-0000-4000-8000-000000000006/images/60000000-0000-4000-8000-000000000006/content": "findie-glasses.svg"
+  }
+}

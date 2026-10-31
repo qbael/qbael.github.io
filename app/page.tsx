@@ -469,7 +469,9 @@ function ProjectFile({ project }: { project: (typeof projects)[number] }) {
           </div>
         </div>
         <section>
-          <h2 className="section-label">Inside the application</h2>
+          <h2 className="section-label">
+            Inside the application · {project.screenshots.length} screens
+          </h2>
           <p className="body-copy project-image-note">
             {project.imageNote} Open an image to view it at full size.
           </p>

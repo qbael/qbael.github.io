@@ -12,12 +12,24 @@ export const projects = [
         label: 'Search by description or image, with location and date filters',
       },
       {
-        src: '/projects/findie-mobile.jpg',
-        label: 'Responsive search experience on mobile',
+        src: '/projects/findie-search.jpg',
+        label: 'Demo — search results with item photos and custody locations',
+      },
+      {
+        src: '/projects/findie-item.jpg',
+        label: 'Demo — item details and the ownership verification process',
+      },
+      {
+        src: '/projects/findie-claim.jpg',
+        label: 'Demo — review an ownership claim before opening a conversation',
+      },
+      {
+        src: '/projects/findie-intake.jpg',
+        label: 'Demo — confirm physical intake at a Findie Hub',
       },
     ],
     imageNote:
-      'Current application UI, captured locally. AI search requires the API, worker and model services to be running.',
+      'Screenshots of the actual application interface, populated with fictional demo items, claims and reception-hub records.',
     summary:
       'A lost-and-found platform connecting finders, owners and reception hubs through Vietnamese text and image search, ownership claims and traceable handovers.',
     problem:
@@ -66,15 +78,23 @@ export const projects = [
       },
       {
         src: '/projects/medify-doctors.jpg',
-        label: 'Doctor search and specialty filters',
+        label: 'Demo — browse doctor profiles and specialties',
       },
       {
         src: '/projects/medify-booking.jpg',
         label: 'Doctor profile and available appointment slots',
       },
+      {
+        src: '/projects/medify-appointments.jpg',
+        label: 'Demo — clinic appointment management and booking statuses',
+      },
+      {
+        src: '/projects/medify-schedule.jpg',
+        label: 'Demo — configure a doctor’s weekly working hours',
+      },
     ],
     imageNote:
-      'Application UI with demo doctors and appointment slots. Implementation repository: HealthPro.',
+      'Screenshots of the actual application interface with fictional doctors, patients, appointments and weekly schedules. Implementation repository: HealthPro.',
     summary:
       'A medical appointment application connecting patients, doctors and clinics through provider discovery, available time slots and appointment management.',
     problem:
@@ -126,12 +146,16 @@ export const projects = [
         label: 'Community administration and moderation',
       },
       {
-        src: '/projects/instory-signin.jpg',
-        label: 'Account sign-in and Google authentication',
+        src: '/projects/instory-profile.jpg',
+        label: 'Demo — personal profile, story highlights and media gallery',
+      },
+      {
+        src: '/projects/instory-trends.jpg',
+        label: 'Demo — discover trending hashtags and community posts',
       },
     ],
     imageNote:
-      'Application UI with sample users and posts, plus the current sign-in screen captured locally.',
+      'Screenshots of the actual application interface with fictional profiles, posts, conversations and moderation records.',
     summary:
       'A full-stack social platform for sharing posts and stories, discovering people and hashtags, and staying connected through live messaging and notifications.',
     problem:
